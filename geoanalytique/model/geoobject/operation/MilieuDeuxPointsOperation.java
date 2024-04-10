@@ -26,8 +26,8 @@ public class MilieuDeuxPointsOperation implements Operation {
      * @return Le point milieu.
      */
     public Point milieu() {
-        int newX = (point1.getAbscisse() + point2.getAbscisse()) / 2;
-        int newY = (point1.getOrdonnee() + point2.getOrdonnee()) / 2;
+        float newX = (point1.getAbscisse() + point2.getAbscisse()) / 2;
+        float newY = (point1.getOrdonnee() + point2.getOrdonnee()) / 2;
         return new Point(newX, newY);
     }
 }

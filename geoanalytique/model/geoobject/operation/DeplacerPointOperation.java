@@ -7,8 +7,8 @@ import geoanalytique.model.Point;
  */
 public class DeplacerPointOperation implements Operation {
     private Point point;
-    private int nouveauX;
-    private int nouveauY;
+    private float nouveauX;
+    private float nouveauY;
 
     /**
      * Constructeur de l'opération de déplacement de point.
@@ -27,7 +27,7 @@ public class DeplacerPointOperation implements Operation {
      * Méthode pour effectuer le déplacement du point vers les nouvelles coordonnées.
      */
     public void deplacer() {
-        point.setX(nouveauX);
-        point.setY(nouveauY);
+        point.setAbscisse(nouveauX);
+        point.setOrdonnee(nouveauY);
     }
 }

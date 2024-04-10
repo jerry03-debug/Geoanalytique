@@ -25,8 +25,8 @@ public class DistanceAUnPointOperation implements Operation {
      * @return La distance entre les deux points.
      */
     public double distanceAUnPoint(Point otherPoint) {
-        int deltaX = otherPoint.getX() - point1.getX();
-        int deltaY = otherPoint.getY() - point1.getY();
+        float deltaX = otherPoint.getAbscisse() - point1.getAbscisse();
+        float deltaY = otherPoint.getOrdonnee() - point1.getOrdonnee();
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 }

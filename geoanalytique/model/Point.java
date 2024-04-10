@@ -77,4 +77,5 @@ public class Point extends GeoObject {
         float diffY = ordonnee - p.getOrdonnee();
         return Math.sqrt(diffX * diffX + diffY * diffY);
     }
+
 }

@@ -1,5 +1,6 @@
 package geoanalytique.model.geoobject.operation;
 
+import geoanalytique.model.Droite;
 import geoanalytique.model.Point;
 
 /**
@@ -74,4 +75,34 @@ public interface Operation {
      * @param nouveauNom Le nouveau nom de l'objet.
      */
     void changerNom(String nouveauNom);
+
+    /**
+     * Calcule la médiatrice d'un segment défini par deux points.
+     *
+     * @param point1 Le premier point du segment.
+     * @param point2 Le deuxième point du segment.
+     * @return La droite représentant la médiatrice du segment.
+     */
+    Droite calculerMediatrice(Point point1, Point point2);
+
+    /**
+     * Calcule la bissectrice d'un angle défini par trois points.
+     *
+     * @param point1 Le premier point de l'angle.
+     * @param point2 Le point de l'angle.
+     * @param point3 Le troisième point de l'angle.
+     * @return La droite représentant la bissectrice de l'angle.
+     */
+    Droite calculerBissectrice(Point point1, Point point2, Point point3);
+
+    /**
+     * Calcule la médiane d'un triangle défini par trois points.
+     *
+     * @param point1 Le premier point du triangle.
+     * @param point2 Le deuxième point du triangle.
+     * @param point3 Le troisième point du triangle.
+     * @return La droite représentant la médiane du triangle.
+     */
+    Droite calculerMediane(Point point1, Point point2, Point point3);
 }
+
