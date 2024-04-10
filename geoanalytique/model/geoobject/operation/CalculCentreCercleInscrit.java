@@ -6,7 +6,7 @@ import geoanalytique.model.Point;
 /**
  * Cette classe est utilisée pour calculer le centre du cercle inscrit dans un triangle.
  */
-public class CalculCentreCercleInscrit {
+public class CalculCentreCercleInscrit implements Operation{
 
     private Point point1;
     private Point point2;

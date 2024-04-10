@@ -6,7 +6,7 @@ import geoanalytique.model.Point;
 /**
  * Cette classe est utilisée pour calculer le centre de gravite dans un triangle.
  */
-public class CalculCentreGravite {
+public class CalculCentreGravite implements Operation{
 
     private Point point1;
     private Point point2;

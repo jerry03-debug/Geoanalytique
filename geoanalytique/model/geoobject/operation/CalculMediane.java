@@ -7,7 +7,7 @@ import geoanalytique.model.Point;
  * Classe CalculMediane qui implémente l'interface Operation.
  * Cette classe est utilisée pour calculer la médiatrice d'un segment défini par deux points.
  */
-public class CalculMediane{
+public class CalculMediane implements Operation{
 
     // Les trois points définissant le triangle
     private Point point1;

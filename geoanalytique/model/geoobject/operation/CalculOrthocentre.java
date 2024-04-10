@@ -6,7 +6,7 @@ import geoanalytique.model.Point;
 /**
  * Cette classe est utilisée pour calculer l'orthocentre dans un triangle.
  */
-public class CalculOrthocentre {
+public class CalculOrthocentre implements Operation{
 
     private Point point1;
     private Point point2;

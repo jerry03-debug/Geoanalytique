@@ -3,7 +3,7 @@ package geoanalytique.model.geoobject.operation;
 import geoanalytique.model.Droite;
 import geoanalytique.model.Point;
 
-public class CalculBissectrice{
+public class CalculBissectrice implements Operation{
 
 // Les trois points définissant l'angle
 private Point point1;

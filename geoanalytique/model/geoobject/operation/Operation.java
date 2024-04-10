@@ -104,5 +104,46 @@ public interface Operation {
      * @return La droite représentant la médiane du triangle.
      */
     Droite calculerMediane(Point point1, Point point2, Point point3);
+
+   
+    /**
+     * Calcule l'orthocentre d'un triangle défini par trois points.
+     *
+     * @param point1 Le premier point du triangle.
+     * @param point2 Le deuxième point du triangle.
+     * @param point3 Le troisième point du triangle.
+     * @return Le point représentant l'orthocentre du triangle.
+     */
+    Point calculerOrthocentre(Point point1, Point point2, Point point3);
+    
+    /**
+     * Calcule le centre du cercle inscrit dans un triangle défini par trois points.
+     *
+     * @param point1 Le premier point du triangle.
+     * @param point2 Le deuxième point du triangle.
+     * @param point3 Le troisième point du triangle.
+     * @return Le point représentant le centre du cercle inscrit dans le triangle.
+     */
+    Point calculerCentreCercleInscrit(Point point1, Point point2, Point point3);
+    
+    /**
+     * Calcule le centre du cercle circonscrit à un triangle défini par trois points.
+     *
+     * @param point1 Le premier point du triangle.
+     * @param point2 Le deuxième point du triangle.
+     * @param point3 Le troisième point du triangle.
+     * @return Le point représentant le centre du cercle circonscrit au triangle.
+     */
+    Point calculerCentreCercleCirconscrit(Point point1, Point point2, Point point3);
+        
+    /**
+     * Calcule le centre de gravité d'un triangle défini par trois points.
+     *
+     * @param point1 Le premier point du triangle.
+     * @param point2 Le deuxième point du triangle.
+     * @param point3 Le troisième point du triangle.
+     * @return Le point représentant le centre de gravité du triangle.
+     */
+    Point calculerCentreGravite(Point point1, Point point2, Point point3);
 }
 
