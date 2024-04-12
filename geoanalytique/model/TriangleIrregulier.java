@@ -1,44 +1,46 @@
-package model;
-import model.Point;
+package geoanalytique.model;
 
-public class TriangleIrregulier implements Triangle {
+/**
+ * Représente un triangle irrégulier dans un espace géométrique.
+ */
+public class TriangleIrregulier extends Triangle {
 
-    // Attributs pour les sommets du triangle
-    private Point sommet1;
-    private Point sommet2;
-    private Point sommet3;
-
+    /**
+     * Constructeur pour initialiser un triangle irrégulier avec ses sommets.
+     *
+     * @param sommet1 Le premier sommet du triangle.
+     * @param sommet2 Le deuxième sommet du triangle.
+     * @param sommet3 Le troisième sommet du triangle.
+     */
     public TriangleIrregulier(Point sommet1, Point sommet2, Point sommet3) {
-        // Assignation des sommets
-        this.sommet1 = sommet1;
-        this.sommet2 = sommet2;
-        this.sommet3 = sommet3;
+        super(sommet1, sommet2, sommet3);
     }
 
-    public double getPerimetre() {
-        // Calcul des distances entre les sommets et sommation
-        double perimetre = sommet1.distance(sommet2) + sommet2.distance(sommet3) + sommet3.distance(sommet1);
-        return perimetre;
+    /**
+     * Calcule le périmètre du triangle irrégulier.
+     *
+     * @return Le périmètre du triangle irrégulier.
+     */
+    @Override
+    public double calculerPerimetre() {
+        return sommet1.distance(sommet2) + sommet2.distance(sommet3) + sommet3.distance(sommet1);
     }
 
-    // Méthode de Héron pour calculer l'aire du triangle 
-    public double getAire() {
+    /**
+     * Calcule l'aire du triangle irrégulier en utilisant la formule de Héron.
+     *
+     * @return L'aire du triangle irrégulier.
+     */
+    @Override
+    public double calculerAire() {
         // Calcul des longueurs des côtés
         double a = sommet1.distance(sommet2);
         double b = sommet2.distance(sommet3);
         double c = sommet3.distance(sommet1);
-        // Calcul du semi-périmètre
+        // Calcul du demi-périmètre
         double s = (a + b + c) / 2;
-        // Calcul de l'aire selon la formule de Héron
+        // Calcul de l'aire selon la formule de Heron
         double aire = Math.sqrt(s * (s - a) * (s - b) * (s - c));
         return aire;
-    }
-
-    // Méthode pour déterminer si un point est à l'intérieur du triangle
-    public boolean estPointInterieur(Point point) {
-        // Utilisation de la méthode du barycentre ou autre méthode de détermination de l'intérieur
-        // Pour vérifier si le point est à l'intérieur du triangle
-        // Cette partie doit être implémentée
-        // ...
     }
 }
