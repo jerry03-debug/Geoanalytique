@@ -3,7 +3,7 @@ package geoanalytique.model.geoobject.operation;
 import geoanalytique.model.Droite;
 import geoanalytique.model.Point;
 
-public class CalculHauteur implements Operation{
+public class HauteurTriangleOperation implements Operation{
 
     // Les trois points définissant le triangle
 private Point point1;
@@ -16,7 +16,7 @@ private Point point3;
  * @param point2 Le deuxième point du triangle.
  * @param point3 Le troisième point du triangle.
  */
-public CalculHauteur(Point point1, Point point2, Point point3) {
+public HauteurTriangleOperation(Point point1, Point point2, Point point3) {
     this.point1 = point1;
     this.point2 = point2;
     this.point3 = point3;

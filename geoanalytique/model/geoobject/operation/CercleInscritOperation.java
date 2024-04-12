@@ -6,7 +6,7 @@ import geoanalytique.model.Point;
 /**
  * Cette classe est utilisée pour calculer le centre du cercle inscrit dans un triangle.
  */
-public class CalculCentreCercleInscrit implements Operation{
+public class CercleInscritOperation implements Operation{
 
     private Point point1;
     private Point point2;
@@ -19,7 +19,7 @@ public class CalculCentreCercleInscrit implements Operation{
      * @param point2 Le deuxième point du triangle.
      * @param point3 Le troisième point du triangle.
      */
-    public CalculCentreCercleInscrit(Point point1, Point point2, Point point3) {
+    public CercleInscritOperation(Point point1, Point point2, Point point3) {
         this.point1 = point1;
         this.point2 = point2;
         this.point3 = point3;

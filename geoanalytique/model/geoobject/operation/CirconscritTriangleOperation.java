@@ -6,7 +6,7 @@ import geoanalytique.model.Point;
 /**
  * Cette classe est utilisée pour calculer le centre du cercle circonscrit dans un triangle.
  */
-public class CalculCentreCercleCirconscrit implements Operation{
+public class CirconscritTriangleOperation implements Operation{
 
     private Point point1;
     private Point point2;
@@ -19,7 +19,7 @@ public class CalculCentreCercleCirconscrit implements Operation{
      * @param point2 Le deuxième point du triangle.
      * @param point3 Le troisième point du triangle.
      */
-    public CalculCentreCercleCirconscrit(Point point1, Point point2, Point point3) {
+    public CirconscritTriangleOperation(Point point1, Point point2, Point point3) {
         this.point1 = point1;
         this.point2 = point2;
         this.point3 = point3;
@@ -35,7 +35,7 @@ public class CalculCentreCercleCirconscrit implements Operation{
 
      public Point calculerCentreCercleCirconscrit() {
         // Crée une instance de CalculMediatrice  avec les deux points du segment
-        CalculMediatrice mediatrice  = new CalculMediatrice (point1, point2);
+        MediatriceSegmentOperation mediatrice  = new MediatriceSegmentOperation (point1, point2);
         
         // Calcule la mediatrice  du segment formé par les points point1 et point2
         Droite mediatriceA = mediatrice.calculerMediatrice (point1, point2);

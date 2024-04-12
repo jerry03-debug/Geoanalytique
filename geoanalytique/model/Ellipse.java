@@ -84,46 +84,4 @@ public class Ellipse extends Surface {
         // La distance focale d'une ellipse peut être calculée à l'aide de la formule mathématique sqrt(grandAxe^2 - petitAxe^2).
         return Math.sqrt(grandAxe * grandAxe - petitAxe * petitAxe);
     }
-
-    /**
-     * Calcule l'aire de l'ellipse.
-     *
-     * @return L'aire de l'ellipse.
-     */
-    @Override
-    public double calculerAire() {
-        // L'aire d'une ellipse peut être calculée à l'aide de la formule mathématique PI * petitAxe * grandAxe.
-        return Math.PI * petitAxe * grandAxe;
-    }
-
-    /**
-     * Calcule le périmètre de l'ellipse.
-     *
-     * @return Le périmètre de l'ellipse.
-     */
-    @Override
-    public double calculerPerimetre() {
-    }
-
-    /**
-     * Vérifie si un point donné appartient à l'ellipse.
-     *
-     * @param p Le point à vérifier.
-     * @return Vrai si le point appartient à l'ellipse, sinon faux.
-     */
-    @Override
-    public boolean appartient(Point p) {
-    }
-
-    @Override
-    public void deplacer(Point nouvellePosition) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deplacer'");
-    }
-
-    @Override
-    public double distance(Point p) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'distance'");
-    }
 }

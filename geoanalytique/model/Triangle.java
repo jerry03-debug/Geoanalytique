@@ -3,7 +3,7 @@ package geoanalytique.model;
 /**
  * Classe abstraite représentant un triangle dans un espace géométrique.
  */
-public abstract class Triangle {
+public abstract class Triangle extends Polygone {
     /** Le premier sommet du triangle. */
     protected Point sommet1;
     /** Le deuxième sommet du triangle. */
@@ -18,25 +18,14 @@ public abstract class Triangle {
      * @param sommet2 Le deuxième sommet du triangle.
      * @param sommet3 Le troisième sommet du triangle.
      */
+
+
     public Triangle(Point sommet1, Point sommet2, Point sommet3) {
+        super();
         this.sommet1 = sommet1;
         this.sommet2 = sommet2;
         this.sommet3 = sommet3;
     }
-
-    /**
-     * Méthode abstraite pour calculer le périmètre du triangle.
-     *
-     * @return Le périmètre du triangle.
-     */
-    public abstract double calculerPerimetre();
-
-    /**
-     * Méthode abstraite pour calculer l'aire du triangle.
-     *
-     * @return L'aire du triangle.
-     */
-    public abstract double calculerAire();
 
     /**
      * Méthode concrète pour obtenir le premier sommet du triangle.

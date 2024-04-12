@@ -14,7 +14,7 @@ public class Segment extends Droite {
      * @param point2 Deuxième point du segment.
      */
     public Segment(Point point1, Point point2) {
-        super(point1, calculerPente(point1, point2)); // Appel au constructeur de la classe parente avec le premier point et la pente calculée
+        super(point1.getOrdonnee()-calculerPente(point1, point2)*point1.getAbscisse(), calculerPente(point1, point2)); // Appel au constructeur de la classe parente avec le premier point et la pente calculée
         this.point1 = point1;
         this.point2 = point2;
     }
@@ -64,43 +64,6 @@ public class Segment extends Droite {
      */
     public void setPoint2(Point point2) {
         this.point2 = point2;
-    }
-
-    /**
-     * Calcule le point milieu du segment.
-     *
-     * @return Le point milieu du segment.
-     */
-    public Point milieu() {
-        float x = (point1.getAbscisse() + point2.getAbscisse()) / 2;
-        float y = (point1.getOrdonnee() + point2.getOrdonnee()) / 2;
-        return new Point(x, y);
-    }
-
-    /**
-     * Calcule la longueur du segment.
-     *
-     * @return La longueur du segment.
-     */
-    public float longueur() {
-        float diffX = point2.getAbscisse() - point1.getAbscisse();
-        float diffY = point2.getOrdonnee() - point1.getOrdonnee();
-        return (float) Math.sqrt(diffX * diffX + diffY * diffY);
-    }
-
-    /**
-     * Calcule la médiatrice du segment.
-     *
-     * @return La droite représentant la médiatrice du segment.
-     */
-    public Droite mediatrice() {
-        // Calcul du point milieu du segment
-        Point milieu = milieu();
-        // Calcul de la pente inverse de celle du segment
-        Float penteMediatrice = -1 / getPente();
-        // Calcul de l'ordonnée à l'origine de la droite médiatrice
-        Float ordonneeOrigine = milieu.getOrdonnee() - penteMediatrice * milieu.getAbscisse();
-        return new Droite(milieu, penteMediatrice);
     }
 
 }

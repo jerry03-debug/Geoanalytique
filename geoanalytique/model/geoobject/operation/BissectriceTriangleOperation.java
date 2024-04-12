@@ -2,8 +2,9 @@ package geoanalytique.model.geoobject.operation;
 
 import geoanalytique.model.Droite;
 import geoanalytique.model.Point;
+import geoanalytique.util.Operation;
 
-public class CalculBissectrice implements Operation{
+public class BissectriceTriangleOperation implements Operation{
 
 // Les trois points définissant l'angle
 private Point point1;
@@ -11,12 +12,12 @@ private Point point2;
 private Point point3;
 
 /**
- * Constructeur de la classe CalculCalculBissectrice
+ * Constructeur de la classe CalculBissectriceTriangleOperation
  * @param point1 Le premier point de l'angle.
  * @param point2 Le deuxième point de l'angle.
  * @param point3 Le troisième point de l'angle.
  */
-public CalculBissectrice(Point point1, Point point2, Point point3) {
+public BissectriceTriangleOperation(Point point1, Point point2, Point point3) {
     this.point1 = point1;
     this.point2 = point2;
     this.point3 = point3;
@@ -31,7 +32,7 @@ public CalculBissectrice(Point point1, Point point2, Point point3) {
 Pour calculer la bissectrice, nous devons d'abord calculer le ratio de division de l'angle en utilisant les distances entre les points point1, point2 et point3, 
 puis calculer le barycentre, qui est le point de division de la bissectrice.*/
 
-public Droite calculerBissectrice(Point point1, Point point2, Point point3) {
+public Droite calculer(Point point1, Point point2, Point point3) {
 
     // Calcul du ratio de division de l'angle en utilisant les distances entre les points point1, point2 et point3
     float ratio = (float) Math.sqrt(point2.distance(point1) / point3.distance(point1));
@@ -46,5 +47,59 @@ public Droite calculerBissectrice(Point point1, Point point2, Point point3) {
     float ordonneeOrigineBissectrice = point1.getOrdonnee() - penteBissectrice * point1.getAbscisse();
 
     return new Droite(ordonneeOrigineBissectrice, penteBissectrice);
+}
+
+@Override
+public String getTitle() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
+}
+
+@Override
+public int getArite() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getArite'");
+}
+
+@Override
+public void setArgument(int num, Object o) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+}
+
+@Override
+public Class getClassArgument(int num) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+}
+
+@Override
+public Object calculer() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'calculer'");
+}
+
+@Override
+public void deplacer(int newX, int newY) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'deplacer'");
+}
+
+@Override
+public double distanceAUnPoint(Point otherPoint) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'distanceAUnPoint'");
+}
+
+@Override
+public Point milieu(Point point1, Point point2) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'milieu'");
+}
+
+@Override
+public void changerNom(String nouveauNom) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
 }
 }

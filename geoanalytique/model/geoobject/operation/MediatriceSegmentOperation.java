@@ -7,7 +7,7 @@ import geoanalytique.model.Point;
  * Classe CalculMediatrice qui implémente l'interface Operation.
  * Cette classe est utilisée pour calculer la médiatrice d'un segment défini par deux points.
  */
-public class CalculMediatrice implements Operation{
+public class MediatriceSegmentOperation implements Operation{
 
     // Les deux points définissant le segment
     private Point point1;
@@ -18,7 +18,7 @@ public class CalculMediatrice implements Operation{
      * @param point1 Le premier point du segment.
      * @param point2 Le deuxième point du segment.
      */
-    public CalculMediatrice(Point point1, Point point2) {
+    public MediatriceSegmentOperation(Point point1, Point point2) {
         this.point1 = point1;
         this.point2 = point2;
     }

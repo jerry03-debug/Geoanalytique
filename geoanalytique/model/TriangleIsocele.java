@@ -24,28 +24,28 @@ public class TriangleIsocele extends Triangle {
         this.longueurCote = longueurCote;
     }
 
-    /**
-     * Calcule le périmètre du triangle isocèle.
-     *
-     * @return Le périmètre du triangle isocèle.
-     */
-    @Override
-    public double calculerPerimetre() {
-        double perimetre = 2 * longueurCote + longueurBase;
-        return perimetre;
-    }
+    // /**
+    //  * Calcule le périmètre du triangle isocèle.
+    //  *
+    //  * @return Le périmètre du triangle isocèle.
+    //  */
+    // @Override
+    // public double calculerPerimetre() {
+    //     double perimetre = 2 * longueurCote + longueurBase;
+    //     return perimetre;
+    // }
 
-    /**
-     * Calcule l'aire du triangle isocèle.
-     *
-     * @return L'aire du triangle isocèle.
-     */
-    @Override
-    public double calculerAire() {
-        // Calcul de la hauteur du triangle à partir de la base et des côtés égaux
-        double hauteur = Math.sqrt(Math.pow(longueurCote, 2) - Math.pow(longueurBase / 2, 2));
-        // Calcul de l'aire en utilisant la formule (base * hauteur) / 2
-        double aire = (longueurBase * hauteur) / 2;
-        return aire;
-    }
+    // /**
+    //  * Calcule l'aire du triangle isocèle.
+    //  *
+    //  * @return L'aire du triangle isocèle.
+    //  */
+    // @Override
+    // public double calculerAire() {
+    //     // Calcul de la hauteur du triangle à partir de la base et des côtés égaux
+    //     double hauteur = Math.sqrt(Math.pow(longueurCote, 2) - Math.pow(longueurBase / 2, 2));
+    //     // Calcul de l'aire en utilisant la formule (base * hauteur) / 2
+    //     double aire = (longueurBase * hauteur) / 2;
+    //     return aire;
+    // }
 }

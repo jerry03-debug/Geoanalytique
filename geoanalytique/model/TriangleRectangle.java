@@ -24,26 +24,26 @@ public class TriangleRectangle extends Triangle {
         this.longueurHauteur = longueurHauteur;
     }
 
-    /**
-     * Calcule le périmètre du triangle rectangle.
-     *
-     * @return Le périmètre du triangle rectangle.
-     */
-    @Override
-    public double calculerPerimetre() {
-        double hypotenuse = Math.sqrt(Math.pow(longueurBase, 2) + Math.pow(longueurHauteur, 2));
-        double perimetre = longueurBase + longueurHauteur + hypotenuse;
-        return perimetre;
-    }
+    // /**
+    //  * Calcule le périmètre du triangle rectangle.
+    //  *
+    //  * @return Le périmètre du triangle rectangle.
+    //  */
+    // @Override
+    // public double calculerPerimetre() {
+    //     double hypotenuse = Math.sqrt(Math.pow(longueurBase, 2) + Math.pow(longueurHauteur, 2));
+    //     double perimetre = longueurBase + longueurHauteur + hypotenuse;
+    //     return perimetre;
+    // }
     
-    /**
-     * Calcule l'aire du triangle rectangle.
-     *
-     * @return L'aire du triangle rectangle.
-     */
-    @Override
-    public double calculerAire() {
-        double aire = (longueurBase * longueurHauteur) / 2;
-        return aire;
-    }
+    // /**
+    //  * Calcule l'aire du triangle rectangle.
+    //  *
+    //  * @return L'aire du triangle rectangle.
+    //  */
+    // @Override
+    // public double calculerAire() {
+    //     double aire = (longueurBase * longueurHauteur) / 2;
+    //     return aire;
+    // }
 }
