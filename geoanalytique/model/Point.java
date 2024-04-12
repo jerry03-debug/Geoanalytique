@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-package model;
-
-public class Point {
-    public double x, y;
-
-    /**
-     * @param x
-     * @param y
-     */
-    public Point(double x, double y) {
-        this.x = x;
-        this.y = y;
-}
-
-}
-=======
 package geoanalytique.model;
 
 /**
@@ -96,4 +79,3 @@ public class Point extends GeoObject {
     }
 
 }
->>>>>>> 2ae3a556cc5ee744d6a8a491ef9d91e06289f932

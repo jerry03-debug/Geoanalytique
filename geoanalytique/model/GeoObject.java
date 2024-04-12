@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-package model;
-
-public class GeoObject {
-    public double a, b; {
-        this.a = a;
-        this.b = b;
-    }
-}
-=======
 package geoanalytique.model;
 
 /**
@@ -30,4 +20,3 @@ public abstract class GeoObject {
      */
     public abstract double distance(Point p);
 }
->>>>>>> 2ae3a556cc5ee744d6a8a491ef9d91e06289f932
