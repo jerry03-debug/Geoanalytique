@@ -4,10 +4,12 @@ package geoanalytique.util;
 
 import geoanalytique.model.Carre;
 import geoanalytique.model.Cercle;
+import geoanalytique.model.Droite;
 import geoanalytique.model.Ellipse;
 import geoanalytique.model.Point;
 import geoanalytique.model.Polygone;
 import geoanalytique.model.Rectangle;
+import geoanalytique.model.Segment;
 import geoanalytique.model.Triangle;
 import geoanalytique.model.Losange;
 import geoanalytique.model.Parallelogramme;
@@ -19,6 +21,19 @@ public class Dessinateur implements GeoObjectVisitor<String> {
         // Logique pour dessiner un point
         return "Dessin d'un point aux coordonnées";
     }
+    
+    @Override
+    public String visit(Segment segment) {
+        // Logique pour dessiner un segment
+        return "Dessin d'un segment ";
+    }
+    
+    @Override
+    public String visit(Droite droite) {
+        // Logique pour dessiner une droite
+        return "Dessin d'une droite";
+    }
+    
 
     @Override
     public String visit(Carre carre) {

@@ -4,12 +4,14 @@ package geoanalytique.util;
 
 import geoanalytique.model.Carre;
 import geoanalytique.model.Cercle;
+import geoanalytique.model.Droite;
 import geoanalytique.model.Ellipse;
 import geoanalytique.model.Losange;
 import geoanalytique.model.Parallelogramme;
 import geoanalytique.model.Point;
 import geoanalytique.model.Polygone;
 import geoanalytique.model.Rectangle;
+import geoanalytique.model.Segment;
 import geoanalytique.model.Triangle;
 
 public interface GeoObjectVisitor<T> {
@@ -21,6 +23,22 @@ public interface GeoObjectVisitor<T> {
      * @return Le résultat de la visite.
      */
     T visit(Point point);
+
+    /**
+     * Visite un segment.
+     * 
+     * @param point Le segment à visiter.
+     * @return Le résultat de la visite.
+     */
+    T visit(Segment segment);
+
+    /**
+     * Visite une droite.
+     * 
+     * @param point La  droite à visiter.
+     * @return Le résultat de la visite.
+     */
+    T visit(Droite droite);
 
     /**
      * Visite un carré.
