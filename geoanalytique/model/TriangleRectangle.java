@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente un triangle rectangle dans un espace géométrique.
  */
@@ -46,4 +48,15 @@ public class TriangleRectangle extends Triangle {
     //     double aire = (longueurBase * longueurHauteur) / 2;
     //     return aire;
     // }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 }

@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente un segment dans un système de coordonnées cartésiennes.
  */
@@ -66,4 +68,14 @@ public class Segment extends Droite {
         this.point2 = point2;
     }
 
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 }
