@@ -85,15 +85,5 @@ public Class getClassArgument(int num) {
             throw new IllegalArgumentException("Invalid argument index: " + num);
     }
 }
-
-/**
- * Change le nom de l'opération.
- * @param nouveauNom Le nouveau nom de l'opération.
- */
-@Override
-public void changerNom(String nouveauNom) {
-    // Cette méthode n'a pas de sens pour cette classe, car le nom de l'opération est fixe.
-    throw new UnsupportedOperationException("Cannot change name of this operation");
-}
-    
+ 
 }
