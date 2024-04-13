@@ -78,24 +78,6 @@ public class MedianeTriangleOperation implements Operation{
     }
 
     @Override
-    public void deplacer(int newX, int newY) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deplacer'");
-    }
-
-    @Override
-    public double distanceAUnPoint(Point otherPoint) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'distanceAUnPoint'");
-    }
-
-    @Override
-    public Point milieu(Point point1, Point point2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'milieu'");
-    }
-
-    @Override
     public void changerNom(String nouveauNom) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'changerNom'");

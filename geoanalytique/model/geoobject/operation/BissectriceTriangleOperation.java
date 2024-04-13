@@ -32,10 +32,16 @@ public BissectriceTriangleOperation(Point point1, Point point2, Point point3) {
 Pour calculer la bissectrice, nous devons d'abord calculer le ratio de division de l'angle en utilisant les distances entre les points point1, point2 et point3, 
 puis calculer le barycentre, qui est le point de division de la bissectrice.*/
 
-public Droite calculer(Point point1, Point point2, Point point3) {
+@Override
+public Droite calculer() {
+
+    DistanceAUnPointOperation distance1 = new DistanceAUnPointOperation(point1, point2);
+    DistanceAUnPointOperation distance2 = new DistanceAUnPointOperation(point1, point3);
+    double ab = distance1.calculer();
+    double ac = distance2.calculer();
 
     // Calcul du ratio de division de l'angle en utilisant les distances entre les points point1, point2 et point3
-    float ratio = (float) Math.sqrt(point2.distance(point1) / point3.distance(point1));
+    float ratio = (float) Math.sqrt(ab / ac);
 
     // Calcul du barycentre, qui est le point de division de la bissectrice
     Point barycentre = new Point((point2.getAbscisse() + ratio * point3.getAbscisse()) / (1 + ratio), (point2.getOrdonnee() + ratio * point3.getOrdonnee()) / (1 + ratio));
@@ -71,30 +77,6 @@ public void setArgument(int num, Object o) {
 public Class getClassArgument(int num) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
-}
-
-@Override
-public Object calculer() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'calculer'");
-}
-
-@Override
-public void deplacer(int newX, int newY) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'deplacer'");
-}
-
-@Override
-public double distanceAUnPoint(Point otherPoint) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'distanceAUnPoint'");
-}
-
-@Override
-public Point milieu(Point point1, Point point2) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'milieu'");
 }
 
 @Override

@@ -2,6 +2,7 @@ package geoanalytique.model.geoobject.operation;
 
 import geoanalytique.model.Droite;
 import geoanalytique.model.Point;
+import geoanalytique.util.Operation;
 
 /**
  * Cette classe est utilisée pour calculer le centre du cercle inscrit dans un triangle.
@@ -33,17 +34,48 @@ public class CercleInscritOperation implements Operation{
 
      /**Le centre du cercle circonscrit à un triangle est l'intersection des bissectrices des angles du triangle. */
 
-     public Point calculerCentreCercleIscrit() {
+     public Point calculer() {
         // Crée une instance de CalculBissectrice avec les trois points du triangle
-        CalculBissectrice bissectrice = new CalculBissectrice(point1, point2, point3);
+        BissectriceTriangleOperation bissectrice = new BissectriceTriangleOperation(point1, point2, point3);
         
         // Calcule la bissectrice de l'angle au point1 (défini par les points point2, point3, point1)
-        Droite bissectriceA = bissectrice.calculerBissectrice(point2, point3, point1);
+        Droite bissectriceA = bissectrice.calculer();
         
         // Calcule la bissectrice de l'angle au point2 (défini par les points point3, point1, point2)
-        Droite bissectriceB = bissectrice.calculerBissectrice(point3, point1, point2);
+        Droite bissectriceB = bissectrice.calculer();
     
         // Renvoie le point d'intersection des deux bissectrices, qui est le centre du cercle inscrit dans le triangle
-        return bissectriceA.intersection(bissectriceB);
+        IntersectionDroiteOperation intersection = new IntersectionDroiteOperation(bissectriceA, bissectriceB );
+        return intersection.calculer();
+    }
+
+    @Override
+    public String getTitle() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
+    }
+
+    @Override
+    public int getArite() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getArite'");
+    }
+
+    @Override
+    public void setArgument(int num, Object o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+    }
+
+    @Override
+    public Class getClassArgument(int num) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+    }
+
+    @Override
+    public void changerNom(String nouveauNom) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
     }
 }

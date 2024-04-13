@@ -2,6 +2,7 @@ package geoanalytique.model.geoobject.operation;
 
 import geoanalytique.model.Droite;
 import geoanalytique.model.Point;
+import geoanalytique.util.Operation;
 
 public class HauteurTriangleOperation implements Operation{
 
@@ -28,8 +29,8 @@ public HauteurTriangleOperation(Point point1, Point point2, Point point3) {
  */
 
  /** En geometrie plane, la hauteur d'un triangle est la droite perpendiculaire à un côté du triangle et passant par le sommet opposé.*/
-
-public Droite calculerHauteur(Point point1, Point point2, Point point3) {
+@Override
+public Droite calculer() {
 
     // Calculer la pente du côté (la base)
     float penteBase = (point3.getOrdonnee() - point2.getOrdonnee()) / (point3.getAbscisse() - point2.getAbscisse());
@@ -41,6 +42,37 @@ public Droite calculerHauteur(Point point1, Point point2, Point point3) {
     float ordonneeOrigineHauteur = point1.getOrdonnee() - penteHauteur * point1.getAbscisse();
 
     return new Droite(ordonneeOrigineHauteur, penteHauteur);
+}
+
+@Override
+public String getTitle() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
+}
+
+@Override
+public int getArite() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getArite'");
+}
+
+@Override
+public void setArgument(int num, Object o) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+}
+
+@Override
+public Class getClassArgument(int num) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+}
+
+
+@Override
+public void changerNom(String nouveauNom) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
 }
 
 }

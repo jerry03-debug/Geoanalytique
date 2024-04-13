@@ -18,13 +18,8 @@ public abstract class Triangle extends Polygone {
      * @param sommet2 Le deuxième sommet du triangle.
      * @param sommet3 Le troisième sommet du triangle.
      */
-
-
     public Triangle(Point sommet1, Point sommet2, Point sommet3) {
-        super();
-        this.sommet1 = sommet1;
-        this.sommet2 = sommet2;
-        this.sommet3 = sommet3;
+        super(new Point[] { sommet1, sommet2, sommet3 });
     }
 
     /**

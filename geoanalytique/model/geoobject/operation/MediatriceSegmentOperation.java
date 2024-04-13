@@ -2,6 +2,7 @@ package geoanalytique.model.geoobject.operation;
 
 import geoanalytique.model.Droite;
 import geoanalytique.model.Point;
+import geoanalytique.util.Operation;
 
 /**
  * Classe CalculMediatrice qui implémente l'interface Operation.
@@ -30,14 +31,14 @@ public class MediatriceSegmentOperation implements Operation{
 
     /**En géométrie plane, la médiatrice d'un segment est la droite perpendiculaire au segment et passant par son milieu. 
     Pour calculer la pente de la médiatrice, nous pouvons utiliser la règle qui dit que si deux droites sont perpendiculaires, le produit de leurs pentes est égal à -1.*/
-
-    public Droite calculerMediatrice(Point point1, Point point2) {
+    @Override
+    public Droite calculer() {
 
         // Création d'une opération pour calculer le milieu de deux points
         MilieuDeuxPointsOperation milieuDeuxPoints = new MilieuDeuxPointsOperation(point1, point2);
 
         // Calcul du point milieu entre point1 et point2
-        Point milieu = milieuDeuxPoints.milieu(point1, point2);
+        Point milieu = milieuDeuxPoints.calculer();
 
         // Calcul de la pente de la droite passant par point1 et point2
         float penteCote = (point2.getOrdonnee() - point1.getOrdonnee()) / (point2.getAbscisse() - point1.getAbscisse());
@@ -50,5 +51,35 @@ public class MediatriceSegmentOperation implements Operation{
         
         // Retour de la droite représentant la médiatrice
         return new Droite(ordonneeOrigine, penteMediatrice);
+    }
+
+    @Override
+    public String getTitle() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
+    }
+
+    @Override
+    public int getArite() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getArite'");
+    }
+
+    @Override
+    public void setArgument(int num, Object o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+    }
+
+    @Override
+    public Class getClassArgument(int num) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+    }
+
+    @Override
+    public void changerNom(String nouveauNom) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
     }
 }

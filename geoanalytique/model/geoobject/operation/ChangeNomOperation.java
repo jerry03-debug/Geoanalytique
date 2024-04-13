@@ -1,6 +1,7 @@
 package geoanalytique.model.geoobject.operation;
 
 import geoanalytique.model.GeoObject;
+import geoanalytique.util.Operation;
 
 /**
  * Cette classe représente une opération pour changer le nom d'un objet géométrique.

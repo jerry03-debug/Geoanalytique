@@ -40,10 +40,10 @@ public class OrthocentreTriangleOperation implements Operation{
         HauteurTriangleOperation hauteur  = new HauteurTriangleOperation (point1, point2, point3);
         
         // Calcule la hauteur issue du sommet point1 et perpendiculaire au segment formé par les points point2 et point3
-        Droite hauteurA = hauteur.calculerHauteur (point1, point2, point3);
+        Droite hauteurA = hauteur.calculer();
         
         //Calcule la hauteur issue du sommet point2 et perpendiculaire au segment formé par les points point3 et point1
-        Droite hauteurB = hauteur.calculerHauteur (point2, point3, point1);
+        Droite hauteurB = hauteur.calculer();
     
         // Renvoie le point d'intersection des deux hauteurs, qui est l'orthocentre du triangle
         IntersectionDroiteOperation intersection = new IntersectionDroiteOperation(hauteurA, hauteurB);
@@ -72,24 +72,6 @@ public class OrthocentreTriangleOperation implements Operation{
     public Class getClassArgument(int num) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
-    }
-
-    @Override
-    public void deplacer(int newX, int newY) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deplacer'");
-    }
-
-    @Override
-    public double distanceAUnPoint(Point otherPoint) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'distanceAUnPoint'");
-    }
-
-    @Override
-    public Point milieu(Point point1, Point point2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'milieu'");
     }
 
     @Override

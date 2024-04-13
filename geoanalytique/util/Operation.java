@@ -43,31 +43,7 @@ public interface Operation {
      */
     Object calculer();
 
-    /**
-     * Déplace un point vers de nouvelles coordonnées.
-     *
-     * @param newX La nouvelle coordonnée X du point.
-     * @param newY La nouvelle coordonnée Y du point.
-     */
-    void deplacer(int newX, int newY);
-
-    /**
-     * Calcule la distance entre le point de l'opération et un autre point spécifié.
-     *
-     * @param otherPoint Le point à partir duquel calculer la distance.
-     * @return La distance entre les deux points.
-     */
-    double distanceAUnPoint(Point otherPoint);
-
-    /**
-     * Calcule le milieu entre deux points spécifiés.
-     *
-     * @param point1 Le premier point.
-     * @param point2 Le deuxième point.
-     * @return Le point milieu.
-     */
-    Point milieu(Point point1, Point point2);
-
+    
     /**
      * Change le nom d'un objet.
      *
