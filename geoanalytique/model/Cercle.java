@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente un cercle dans un système de coordonnées cartésiennes.
  */
@@ -53,5 +55,16 @@ public class Cercle extends Ellipse {
      */
     public void setRayon(Float rayon) {
         this.rayon = rayon;
+    }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

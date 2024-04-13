@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente une droite dans un système de coordonnées cartésiennes.
  */
@@ -52,5 +54,16 @@ public class Droite extends GeoObject {
      */
     public void setPente(float pente) {
         this.pente = pente;
+    }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

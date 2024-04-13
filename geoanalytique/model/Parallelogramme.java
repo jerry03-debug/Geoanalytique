@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Cette classe représente un parallélogramme dans un espace géométrique.
  */
@@ -56,6 +58,17 @@ public class Parallelogramme extends GeoObject {
 
     public void setSommet4(Point sommet4) {
         this.sommet4 = sommet4;
+    }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
 }

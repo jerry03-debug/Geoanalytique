@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente un triangle isocèle dans un espace géométrique.
  */
@@ -48,4 +50,15 @@ public class TriangleIsocele extends Triangle {
     //     double aire = (longueurBase * hauteur) / 2;
     //     return aire;
     // }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 }

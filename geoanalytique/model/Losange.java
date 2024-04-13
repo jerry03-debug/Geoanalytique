@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Cette classe représente un losange dans un espace géométrique.
  */
@@ -17,4 +19,14 @@ public class Losange extends Parallelogramme {
         super(sommet1, sommet2, sommet3, sommet4);
     }
 
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 }

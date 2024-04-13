@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente une ellipse dans un système de coordonnées cartésiennes.
  */
@@ -83,5 +85,16 @@ public class Ellipse extends Surface {
     public double calculDistanceFocal() {
         // La distance focale d'une ellipse peut être calculée à l'aide de la formule mathématique sqrt(grandAxe^2 - petitAxe^2).
         return Math.sqrt(grandAxe * grandAxe - petitAxe * petitAxe);
+    }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

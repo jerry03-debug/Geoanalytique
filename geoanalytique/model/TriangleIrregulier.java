@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente un triangle irrégulier dans un espace géométrique.
  */
@@ -43,4 +45,15 @@ public class TriangleIrregulier extends Triangle {
     //     double aire = Math.sqrt(s * (s - a) * (s - b) * (s - c));
     //     return aire;
     // }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 }

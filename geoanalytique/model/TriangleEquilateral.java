@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Représente un triangle équilatéral dans un espace géométrique.
  */
@@ -39,4 +41,15 @@ public class TriangleEquilateral extends Triangle {
     // public double calculerAire() {
     //     return Math.sqrt(3) * Math.pow(longueurCote, 2) / 4;
     // }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 }

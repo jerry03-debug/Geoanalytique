@@ -1,5 +1,7 @@
 package geoanalytique.model;
 
+import geoanalytique.util.GeoObjectVisitor;
+
 /**
  * Classe abstraite représentant un triangle dans un espace géométrique.
  */
@@ -47,5 +49,16 @@ public abstract class Triangle extends Polygone {
      */
     public Point getSommet3() {
         return sommet3;
+    }
+
+    /**
+     * Accepte un visiteur et lui permet de visiter cet objet géométrique.
+     * 
+     * @param visitor Le visiteur à accepter.
+     * @return Le résultat de la visite.
+     */
+     @Override
+    public <T> T accept(GeoObjectVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }
