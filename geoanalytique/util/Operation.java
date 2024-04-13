@@ -43,12 +43,5 @@ public interface Operation {
      */
     Object calculer();
 
-    
-    /**
-     * Change le nom d'un objet.
-     *
-     * @param nouveauNom Le nouveau nom de l'objet.
-     */
-    void changerNom(String nouveauNom);
 }
 

@@ -34,33 +34,31 @@ public class AireTriangleIsoceleOperation implements Operation {
     }
 
     @Override
-    public String getTitle() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
-    }
+public String getTitle() {
+    return "Calcul de l'aire d'un triangle isocèle";
+}
 
-    @Override
-    public int getArite() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getArite'");
-    }
+@Override
+public int getArite() {
+    return 3; // Le nombre de sommets d'un triangle isocèle
+}
 
-    @Override
-    public void setArgument(int num, Object o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+@Override
+public void setArgument(int num, Object o) {
+    if (!(o instanceof Point)) {
+        throw new IllegalArgumentException("L'argument doit être une instance de Point");
     }
+    aireTriangleQuelconque.setArgument(num, o);
+}
 
-    @Override
-    public Class getClassArgument(int num) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+@Override
+public Class getClassArgument(int num) {
+    if (num >= 0 && num < 3) {
+        return Point.class;
+    } else {
+        throw new IllegalArgumentException("Numéro d'argument invalide");
     }
+}
 
-    @Override
-    public void changerNom(String nouveauNom) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
-    }
 
 }

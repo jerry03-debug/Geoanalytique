@@ -32,34 +32,54 @@ public class DistanceFocalOperation implements Operation {
     
     // Les autres méthodes...
  
-    @Override
-    public String getTitle() {
-// TODO Auto-generated method stub
-throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
-    }
+    /**
+ * Retourne le titre de l'opération.
+ * @return Le titre de l'opération.
+ */
+@Override
+public String getTitle() {
+    return "Distance Focale Operation";
+}
 
-    @Override
-    public int getArite() {
-// TODO Auto-generated method stub
-throw new UnsupportedOperationException("Unimplemented method 'getArite'");
-    }
+/**
+ * Retourne l'arité de l'opération, c'est-à-dire le nombre d'arguments qu'elle prend.
+ * @return L'arité de l'opération.
+ */
+@Override
+public int getArite() {
+    return 2;
+}
 
-    @Override
-    public void setArgument(int num, Object o) {
-// TODO Auto-generated method stub
-throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+/**
+ * Définit l'argument à la position spécifiée.
+ * @param num La position de l'argument à définir.
+ * @param o L'argument à définir.
+ */
+@Override
+public void setArgument(int num, Object o) {
+    if (!(o instanceof Double)) {
+        throw new IllegalArgumentException("Argument must be a Double");
     }
+    switch (num) {
+        case 0:
+            this.grandAxe = (Double) o;
+            break;
+        case 1:
+            this.petitAxe = (Double) o;
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid argument index: " + num);
+    }
+}
 
-    @Override
-    public Class getClassArgument(int num) {
-// TODO Auto-generated method stub
-throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
-    }
-
-    @Override
-    public void changerNom(String nouveauNom) {
-// TODO Auto-generated method stub
-throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
-    }
+/**
+ * Retourne la classe de l'argument à la position spécifiée.
+ * @param num La position de l'argument.
+ * @return La classe de l'argument.
+ */
+@Override
+public Class getClassArgument(int num) {
+    return Double.class;
+}
     
 }

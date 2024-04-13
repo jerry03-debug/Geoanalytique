@@ -16,33 +16,32 @@ public class AireCercleOperation implements Operation {
     }
 
     @Override
-    public String getTitle() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
-    }
+public String getTitle() {
+    return "Calcul de l'aire d'un cercle";
+}
 
-    @Override
-    public int getArite() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getArite'");
-    }
+@Override
+public int getArite() {
+    return 1; // Le nombre d'arguments nécessaires pour calculer l'aire d'un cercle est 1 (le rayon)
+}
 
-    @Override
-    public void setArgument(int num, Object o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+@Override
+public void setArgument(int num, Object o) {
+    if (num != 0) {
+        throw new IllegalArgumentException("Numéro d'argument invalide");
     }
+    if (!(o instanceof Float)) {
+        throw new IllegalArgumentException("L'argument doit être une instance de Float");
+    }
+    this.rayon = (Float) o;
+}
 
-    @Override
-    public Class getClassArgument(int num) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+@Override
+public Class getClassArgument(int num) {
+    if (num != 0) {
+        throw new IllegalArgumentException("Numéro d'argument invalide");
     }
+    return Float.class;
+}
 
-    @Override
-    public void changerNom(String nouveauNom) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
-    }
-    
 }

@@ -4,7 +4,8 @@ import geoanalytique.util.Operation;
 import geoanalytique.model.Point;
 
 /**
- * Cette classe représente une opération pour calculer l'aire d'un triangle rectangle.
+ * Cette classe implémente l'interface Operation pour calculer l'aire d'un triangle rectangle.
+ * Elle utilise trois points (sommet1, sommet2, sommet3) pour représenter les sommets du triangle.
  */
 public class AireTriangleRectangleOperation implements Operation {
 
@@ -26,7 +27,8 @@ public class AireTriangleRectangleOperation implements Operation {
     }
 
     /**
-     * Calcule l'aire du triangle rectangle.
+     * Cette méthode calcule l'aire du triangle rectangle en utilisant la formule de l'aire d'un triangle rectangle : 0.5 * base * hauteur.
+     * Elle utilise la classe DistanceAUnPointOperation pour calculer la longueur des côtés du triangle.
      *
      * @return L'aire du triangle rectangle.
      */
@@ -42,35 +44,36 @@ public class AireTriangleRectangleOperation implements Operation {
        return 0.5 * base * hauteur;
     }
 
+    /**
+     * Cette méthode doit retourner le titre de l'opération, mais elle n'est pas encore implémentée.
+     */
     @Override
     public String getTitle() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
     }
 
+    /**
+     * Cette méthode doit retourner l'arité de l'opération (le nombre d'arguments qu'elle prend), mais elle n'est pas encore implémentée.
+     */
     @Override
     public int getArite() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getArite'");
     }
 
+    /**
+     * Cette méthode doit permettre de définir un argument spécifique pour l'opération, mais elle n'est pas encore implémentée.
+     */
     @Override
     public void setArgument(int num, Object o) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
     }
 
+    /**
+     * Cette méthode doit retourner la classe de l'argument spécifié, mais elle n'est pas encore implémentée.
+     */
     @Override
     public Class getClassArgument(int num) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
     }
 
-    @Override
-    public void changerNom(String nouveauNom) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
-    }
-
-    // Les autres méthodes non implémentées...
 }

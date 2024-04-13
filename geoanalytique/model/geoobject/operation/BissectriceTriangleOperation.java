@@ -55,33 +55,57 @@ public Droite calculer() {
     return new Droite(ordonneeOrigineBissectrice, penteBissectrice);
 }
 
+/**
+ * Retourne le titre de l'opération.
+ * @return Le titre de l'opération.
+ */
 @Override
 public String getTitle() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
+    return "Bissectrice Triangle Operation";
 }
 
+/**
+ * Retourne l'arité de l'opération, c'est-à-dire le nombre d'arguments qu'elle prend.
+ * @return L'arité de l'opération.
+ */
 @Override
 public int getArite() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getArite'");
+    return 3;
 }
 
+/**
+ * Définit l'argument à la position spécifiée.
+ * @param num La position de l'argument à définir.
+ * @param o L'argument à définir.
+ */
 @Override
 public void setArgument(int num, Object o) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+    if (!(o instanceof Point)) {
+        throw new IllegalArgumentException("Argument must be a Point");
+    }
+    switch (num) {
+        case 0:
+            this.point1 = (Point) o;
+            break;
+        case 1:
+            this.point2 = (Point) o;
+            break;
+        case 2:
+            this.point3 = (Point) o;
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid argument index: " + num);
+    }
 }
 
+/**
+ * Retourne la classe de l'argument à la position spécifiée.
+ * @param num La position de l'argument.
+ * @return La classe de l'argument.
+ */
 @Override
 public Class getClassArgument(int num) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+    return Point.class;
 }
 
-@Override
-public void changerNom(String nouveauNom) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
-}
 }

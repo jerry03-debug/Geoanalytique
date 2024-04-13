@@ -22,25 +22,6 @@ public class TriangleEquilateral extends Triangle {
         this.longueurCote = longueurCote;
     }
 
-    // /**
-    //  * Calcule le périmètre du triangle équilatéral.
-    //  *
-    //  * @return Le périmètre du triangle équilatéral.
-    //  */
-    // @Override
-    // public double calculerPerimetre() {
-    //     return 3 * longueurCote;
-    // }
-
-    // /**
-    //  * Calcule l'aire du triangle équilatéral.
-    //  *
-    //  * @return L'aire du triangle équilatéral.
-    //  */
-    // @Override
-    // public double calculerAire() {
-    //     return Math.sqrt(3) * Math.pow(longueurCote, 2) / 4;
-    // }
 
     /**
      * Accepte un visiteur et lui permet de visiter cet objet géométrique.

@@ -45,34 +45,46 @@ public class AireRectangleOperation implements Operation {
     }
 
     @Override
-    public String getTitle() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
-    }
+public String getTitle() {
+    return "Calcul de l'aire d'un rectangle";
+}
 
-    @Override
-    public int getArite() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getArite'");
-    }
+@Override
+public int getArite() {
+    return 4; // Le nombre de sommets d'un rectangle
+}
 
-    @Override
-    public void setArgument(int num, Object o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
+@Override
+public void setArgument(int num, Object o) {
+    if (!(o instanceof Point)) {
+        throw new IllegalArgumentException("L'argument doit être une instance de Point");
     }
-
-    @Override
-    public Class getClassArgument(int num) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
+    switch (num) {
+        case 0:
+            this.sommet1 = (Point) o;
+            break;
+        case 1:
+            this.sommet2 = (Point) o;
+            break;
+        case 2:
+            this.sommet3 = (Point) o;
+            break;
+        case 3:
+            this.sommet4 = (Point) o;
+            break;
+        default:
+            throw new IllegalArgumentException("Numéro d'argument invalide");
     }
+}
 
-    @Override
-    public void changerNom(String nouveauNom) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'changerNom'");
+@Override
+public Class getClassArgument(int num) {
+    if (num >= 0 && num < 4) {
+        return Point.class;
+    } else {
+        throw new IllegalArgumentException("Numéro d'argument invalide");
     }
+}
 
-    // Les autres méthodes non implémentées...
+
 }
