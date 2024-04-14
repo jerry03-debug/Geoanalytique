@@ -44,16 +44,30 @@ public class AireLosangeOperation implements Operation {
         return 0.5 * d1 * d2;
     }
 
+
+/**
+ * Retourne le titre de l'opération.
+ * @return Le titre de l'opération.
+ */
     @Override
 public String getTitle() {
     return "Calcul de l'aire d'un losange";
 }
 
+/**
+ * Retourne l'arité de l'opération, c'est-à-dire le nombre d'arguments qu'elle prend.
+ * @return L'arité de l'opération.
+ */
 @Override
 public int getArite() {
     return 4; // Le nombre de sommets d'un losange
 }
 
+/**
+ * Définit l'argument à la position spécifiée.
+ * @param num La position de l'argument à définir.
+ * @param o L'argument à définir.
+ */
 @Override
 public void setArgument(int num, Object o) {
     if (!(o instanceof Point)) {
@@ -77,6 +91,12 @@ public void setArgument(int num, Object o) {
     }
 }
 
+
+/**
+ * Retourne la classe de l'argument à la position spécifiée.
+ * @param num La position de l'argument.
+ * @return La classe de l'argument.
+ */
 @Override
 public Class getClassArgument(int num) {
     if (num >= 0 && num < 4) {

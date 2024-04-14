@@ -40,16 +40,29 @@ public class AireCarreOperation implements Operation {
         return cote * cote;
     }
 
+/**
+ * Retourne le titre de l'opération.
+ * @return Le titre de l'opération.
+ */
     @Override
     public String getTitle() {
         return "Calcul de l'aire d'un carré";
     }
     
+    /**
+ * Retourne l'arité de l'opération, c'est-à-dire le nombre d'arguments qu'elle prend.
+ * @return L'arité de l'opération.
+ */
     @Override
     public int getArite() {
         return 4; // Le nombre de sommets d'un carré
     }
     
+/**
+ * Définit l'argument à la position spécifiée.
+ * @param num La position de l'argument à définir.
+ * @param o L'argument à définir.
+ */
     @Override
     public void setArgument(int num, Object o) {
         if (!(o instanceof Point)) {
@@ -72,6 +85,12 @@ public class AireCarreOperation implements Operation {
                 throw new IllegalArgumentException("Numéro d'argument invalide");
         }
     }
+
+/**
+ * Retourne la classe de l'argument à la position spécifiée.
+ * @param num La position de l'argument.
+ * @return La classe de l'argument.
+ */
     
     @Override
     public Class getClassArgument(int num) {

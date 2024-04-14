@@ -12,6 +12,7 @@ public class AireTriangleRectangleOperation implements Operation {
     private Point sommet1;
     private Point sommet2;
     private Point sommet3;
+    private Object perimetreTriangleQuelconque;
 
     /**
      * Constructeur pour initialiser une opération AireTriangleRectangle avec ses sommets.
@@ -43,37 +44,53 @@ public class AireTriangleRectangleOperation implements Operation {
 
        return 0.5 * base * hauteur;
     }
+/**
+ * Retourne le titre de l'opération.
+ * @return Le titre de l'opération.
+ */
+@Override
+public String getTitle() {
+    return "Perimetre Triangle Rectangle Operation";
+}
 
-    /**
-     * Cette méthode doit retourner le titre de l'opération, mais elle n'est pas encore implémentée.
-     */
-    @Override
-    public String getTitle() {
-        throw new UnsupportedOperationException("Unimplemented method 'getTitle'");
-    }
+/**
+ * Retourne l'arité de l'opération, c'est-à-dire le nombre d'arguments qu'elle prend.
+ * @return L'arité de l'opération.
+ */
+@Override
+public int getArite() {
+    return 3;
+}
 
-    /**
-     * Cette méthode doit retourner l'arité de l'opération (le nombre d'arguments qu'elle prend), mais elle n'est pas encore implémentée.
-     */
-    @Override
-    public int getArite() {
-        throw new UnsupportedOperationException("Unimplemented method 'getArite'");
+/**
+ * Définit l'argument à la position spécifiée.
+ * @param num La position de l'argument à définir.
+ * @param o L'argument à définir.
+ */
+@Override
+public void setArgument(int num, Object o) {
+    if (!(o instanceof Point)) {
+        throw new IllegalArgumentException("Argument must be a Point");
     }
+    switch (num) {
+        case 0:
+        case 1:
+        case 2:
+            ((Operation) this.perimetreTriangleQuelconque).setArgument(num, o);
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid argument index: " + num);
+    }
+}
 
-    /**
-     * Cette méthode doit permettre de définir un argument spécifique pour l'opération, mais elle n'est pas encore implémentée.
-     */
-    @Override
-    public void setArgument(int num, Object o) {
-        throw new UnsupportedOperationException("Unimplemented method 'setArgument'");
-    }
-
-    /**
-     * Cette méthode doit retourner la classe de l'argument spécifié, mais elle n'est pas encore implémentée.
-     */
-    @Override
-    public Class getClassArgument(int num) {
-        throw new UnsupportedOperationException("Unimplemented method 'getClassArgument'");
-    }
+/**
+ * Retourne la classe de l'argument à la position spécifiée.
+ * @param num La position de l'argument.
+ * @return La classe de l'argument.
+ */
+@Override
+public Class getClassArgument(int num) {
+    return Point.class;
+}
 
 }
