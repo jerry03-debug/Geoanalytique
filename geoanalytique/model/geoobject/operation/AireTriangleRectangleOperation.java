@@ -12,7 +12,6 @@ public class AireTriangleRectangleOperation implements Operation {
     private Point sommet1;
     private Point sommet2;
     private Point sommet3;
-    private Object perimetreTriangleQuelconque;
 
     /**
      * Constructeur pour initialiser une opération AireTriangleRectangle avec ses sommets.
@@ -44,13 +43,14 @@ public class AireTriangleRectangleOperation implements Operation {
 
        return 0.5 * base * hauteur;
     }
+
 /**
  * Retourne le titre de l'opération.
  * @return Le titre de l'opération.
  */
 @Override
 public String getTitle() {
-    return "Perimetre Triangle Rectangle Operation";
+    return "Aire Triangle Rectangle Operation";
 }
 
 /**
@@ -66,6 +66,7 @@ public int getArite() {
  * Définit l'argument à la position spécifiée.
  * @param num La position de l'argument à définir.
  * @param o L'argument à définir.
+ * @throws IllegalArgumentException si l'argument n'est pas une instance de Point ou si l'index est invalide.
  */
 @Override
 public void setArgument(int num, Object o) {
@@ -74,9 +75,13 @@ public void setArgument(int num, Object o) {
     }
     switch (num) {
         case 0:
+            this.sommet1 = (Point) o;
+            break;
         case 1:
+            this.sommet2 = (Point) o;
+            break;
         case 2:
-            ((Operation) this.perimetreTriangleQuelconque).setArgument(num, o);
+            this.sommet3 = (Point) o;
             break;
         default:
             throw new IllegalArgumentException("Invalid argument index: " + num);
@@ -87,10 +92,17 @@ public void setArgument(int num, Object o) {
  * Retourne la classe de l'argument à la position spécifiée.
  * @param num La position de l'argument.
  * @return La classe de l'argument.
+ * @throws IllegalArgumentException si l'index est invalide.
  */
 @Override
 public Class getClassArgument(int num) {
-    return Point.class;
+    switch (num) {
+        case 0:
+        case 1:
+        case 2:
+            return Point.class;
+        default:
+            throw new IllegalArgumentException("Invalid argument index: " + num);
+    }
 }
-
 }
