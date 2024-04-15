@@ -24,17 +24,20 @@ public class DeplacerPointOperation implements Operation {
         this.nouveauY = nouveauY;
     }
 
-    /**
+     /**
      * Méthode pour effectuer le déplacement du point vers les nouvelles coordonnées.
      */
     @Override
-    public void calculer() {
+    public Point calculer() {
+        // Effectuez le déplacement du point avec les nouvelles coordonnées
         point.setAbscisse(nouveauX);
         point.setOrdonnee(nouveauY);
+        
+        // Retournez le point après le déplacement
+        return point;
     }
 
-
-   /**
+/**
  * Retourne le titre de l'opération.
  * @return Le titre de l'opération.
  */
