@@ -12,5 +12,5 @@ public abstract class GeoObject {
      * @param visitor Le visiteur à accepter.
      * @return Le résultat de la visite.
      */
-    <T> T accept(GeoObjectVisitor<T> visitor);
+    public abstract <T> T accept(GeoObjectVisitor<T> visitor);
 }
