@@ -14,6 +14,6 @@ public class GCoordonnee extends Graphique {
     @Override
     public void paint(Graphics g) {
         // Dessiner un point aux coordonnées spécifiées
-        g.fillRect(x, y, 1, 1);
+        g.fillRect(x, y, 5, 5);
     }
 }

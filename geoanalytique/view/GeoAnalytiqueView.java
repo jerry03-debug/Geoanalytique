@@ -1,21 +1,30 @@
 package geoanalytique.view;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
+import geoanalytique.graphique.Graphique;
 
 public class GeoAnalytiqueView extends JPanel {
-
+    private List<Graphique> graphiques;
     private static final int AXIS_MARGIN = 50; // Marge pour l'axe des graduations
     private static final int TICK_SIZE = 5; // Taille des marques de graduation
     private static final int TICK_LABEL_MARGIN = 5; // Marge pour les labels de graduation
     private static final int TICK_SPACING = 20; // Espacement entre les graduations
 
-    public GeoAnalytiqueView() {
+    public GeoAnalytiqueView(List<Graphique> graphiques) {
+        this.graphiques = graphiques;
         setBackground(Color.WHITE); // Définir la couleur de fond du JPanel
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        // Dessiner chaque objet graphique
+        for (Graphique graphique : graphiques) {
+            graphique.paint(g);
+        }
 
         int width = getWidth();
         int height = getHeight();
@@ -57,13 +66,18 @@ public class GeoAnalytiqueView extends JPanel {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Repère orthogonal");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(500, 400);
-            frame.add(new GeoAnalytiqueView());
-            frame.setVisible(true);
-        });
+    public void setGraphiques(List<Graphique> nouveauxGraphiques) {
+        graphiques.addAll(nouveauxGraphiques); // Ajoutez tous les nouveaux graphiques à la liste existante
+    }
+
+    // Ajoutez une méthode pour effacer tous les graphiques
+    public void clearGraphiques() {
+        graphiques.clear(); // Vide la liste de graphiques
+        repaint(); // Redessine le panneau pour refléter le changement
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return getParent().getSize(); // Adapter la taille au conteneur parent
     }
 }
