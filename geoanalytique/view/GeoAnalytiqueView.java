@@ -9,7 +9,7 @@ import geoanalytique.graphique.Graphique;
 
 public class GeoAnalytiqueView extends JPanel {
     private List<Graphique> graphiques;
-    private GeoAnalytiqueControleur  controleur = new GeoAnalytiqueControleur();
+    private GeoAnalytiqueControleur  controleur = new GeoAnalytiqueControleur(graphiques);
 
     public GeoAnalytiqueView(List<Graphique> graphiques) {
         this.graphiques = graphiques;
@@ -42,6 +42,11 @@ public class GeoAnalytiqueView extends JPanel {
         graphiques.clear(); // Vide la liste de graphiques
         repaint(); // Redessine le panneau pour refléter le changement
     }
+
+    public List<Graphique> getGraphiques() {
+        return graphiques;
+    }
+
 
     @Override
     public Dimension getPreferredSize() {

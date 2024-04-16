@@ -63,7 +63,7 @@ public class Point extends GeoObject {
      * @return Le résultat de la visite.
      */
      @Override
-    public <T> T accept(GeoObjectVisitor<T> visitor) {
+    public <Graphique> Graphique accept(GeoObjectVisitor<Graphique> visitor) {
         return visitor.visit(this);
     }
 }

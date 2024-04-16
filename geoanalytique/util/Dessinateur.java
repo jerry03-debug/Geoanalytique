@@ -13,73 +13,81 @@ import geoanalytique.model.Segment;
 import geoanalytique.model.Triangle;
 import geoanalytique.model.Losange;
 import geoanalytique.model.Parallelogramme;
+import geoanalytique.graphique.Graphique;
+import geoanalytique.graphique.GCoordonnee;
+import geoanalytique.graphique.GLine;
 
-public class Dessinateur implements GeoObjectVisitor<String> {
-
-    @Override
-    public String visit(Point point) {
-        // Logique pour dessiner un point
-        return "Dessin d'un point aux coordonnées";
-    }
-    
-    @Override
-    public String visit(Segment segment) {
-        // Logique pour dessiner un segment
-        return "Dessin d'un segment ";
-    }
-    
-    @Override
-    public String visit(Droite droite) {
-        // Logique pour dessiner une droite
-        return "Dessin d'une droite";
-    }
-    
+public class Dessinateur implements GeoObjectVisitor<Graphique> {
 
     @Override
-    public String visit(Carre carre) {
-        // Logique pour dessiner un carré
-        return "Dessin d'un carré ";
-    }
-
-    @Override
-    public String visit(Rectangle rectangle) {
-        // Logique pour dessiner un rectangle
-        return "Dessin d'un rectangle ";
-    }
-
-    @Override
-    public String visit(Cercle cercle) {
-        // Logique pour dessiner un cercle
-        return "Dessin d'un cercle ";
-    }
-
-    @Override
-    public String visit(Ellipse ellipse) {
-        // Logique pour dessiner une ellipse
-        return "Dessin d'une ellipse ";
-    }
-
-    @Override
-    public String visit(Triangle triangle) {
-        // Logique pour dessiner un triangle
-        return "Dessin d'un triangle ";
+    public Graphique visit(Point point) {
+        // Créer un objet GCoordonnee pour dessiner le point
+        return new GCoordonnee((int) point.getAbscisse(), (int) point.getOrdonnee());
     }
 
      @Override
-    public String visit(Losange losange) {
-        // Logique pour dessiner un losange
-        return "Dessin d'un losange ";
+    public Graphique visit(Segment segment) {
+        // Créer un objet GLine pour dessiner le segment
+        return new GLine(
+            (int) segment.getPoint1().getAbscisse(),
+            (int) segment.getPoint1().getOrdonnee(),
+            (int) segment.getPoint2().getAbscisse(),
+            (int) segment.getPoint2().getOrdonnee()
+        );
     }
 
     @Override
-    public String visit(Polygone polygone) {
-        // Logique pour dessiner un polygone
-        return "Dessin d'un polygone ";
+    public Graphique visit(Droite droite) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
     }
 
     @Override
-    public String visit(Parallelogramme parallelogramme) {
-        // Logique pour dessiner un parallélogramme
-        return "Dessin d'un parallélogramme ";
+    public Graphique visit(Carre carre) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
     }
+
+    @Override
+    public Graphique visit(Rectangle rectangle) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    }
+
+    @Override
+    public Graphique visit(Cercle cercle) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    }
+
+    @Override
+    public Graphique visit(Ellipse ellipse) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    }
+
+    @Override
+    public Graphique visit(Triangle triangle) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    }
+
+    @Override
+    public Graphique visit(Losange losange) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    }
+
+    @Override
+    public Graphique visit(Polygone polygone) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    }
+
+    @Override
+    public Graphique visit(Parallelogramme parallelogramme) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    }
+
 }
