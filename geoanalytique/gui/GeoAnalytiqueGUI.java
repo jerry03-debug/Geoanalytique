@@ -1,5 +1,6 @@
 package geoanalytique.gui;
 
+import geoanalytique.model.Cercle;
 import geoanalytique.model.Point;
 import geoanalytique.model.Segment;
 import geoanalytique.view.GeoAnalytiqueView;
@@ -245,8 +246,60 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
 
 
     private void btnCercleActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO: Implémentez l'ajout d'un cercle
+        // Afficher une boîte de dialogue pour demander les coordonnées du centre
+        String centerXString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du centre du cercle :", "Coordonnée X du centre", JOptionPane.QUESTION_MESSAGE);
+        String centerYString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du centre du cercle :", "Coordonnée Y du centre", JOptionPane.QUESTION_MESSAGE);
+
+        // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+        if (centerXString != null && centerYString != null) {
+            try {
+                // Convertir les coordonnées du centre en entiers
+                int centerX = Integer.parseInt(centerXString);
+                int centerY = Integer.parseInt(centerYString);
+
+                // Afficher une boîte de dialogue pour demander le rayon du cercle
+                String rayonString = JOptionPane.showInputDialog(this, "Entrez le rayon du cercle :", "Rayon du cercle", JOptionPane.QUESTION_MESSAGE);
+
+                // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+                if (rayonString != null) {
+                    try {
+                        // Convertir le rayon en entier
+                        int rayon = Integer.parseInt(rayonString);
+
+                        // Récupérer les dimensions du repère
+                        int width = repereOrthogonal.getWidth();
+                        int height = repereOrthogonal.getHeight();
+
+                        // Calculer les graduations de l'axe des X et Y
+                        int tickSpacing = TICK_SPACING;
+
+                        // Calculer les coordonnées du centre par rapport au centre du repère
+                        int repereCenterX = (width / 2) + (centerX * tickSpacing);
+                        int repereCenterY = (height / 2) - (centerY * tickSpacing);
+
+                        // Créer un nouveau point avec les coordonnées calculées par rapport au repère
+                        Point pointCentre = new Point(repereCenterX, repereCenterY);
+
+                        // Créer un nouveau cercle avec les coordonnées calculées par rapport au repère
+                        Cercle cercle = new Cercle(pointCentre, rayon);
+
+                        // Ajouter le cercle en tant qu'objet à la liste des graphiques via le contrôleur
+                        controleur.addObject(cercle);
+
+                        // Rafraîchir l'affichage de GeoAnalytiqueView
+                        repereOrthogonal.repaint();
+                    } catch (NumberFormatException e) {
+                        // Afficher un message d'erreur si le rayon n'est pas valide
+                        JOptionPane.showMessageDialog(this, "Veuillez entrer un rayon valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } catch (NumberFormatException e) {
+                // Afficher un message d'erreur si les coordonnées du centre ne sont pas valides
+                JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le centre du cercle.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
+
 
     private void btnCarreActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO: Implémentez l'ajout d'un carré

@@ -16,6 +16,7 @@ import geoanalytique.model.Parallelogramme;
 import geoanalytique.graphique.Graphique;
 import geoanalytique.graphique.GCoordonnee;
 import geoanalytique.graphique.GLine;
+import geoanalytique.graphique.GOvale;
 
 public class Dessinateur implements GeoObjectVisitor<Graphique> {
 
@@ -56,8 +57,12 @@ public class Dessinateur implements GeoObjectVisitor<Graphique> {
 
     @Override
     public Graphique visit(Cercle cercle) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+        return new GOvale(
+            (int) cercle.getCentre().getAbscisse(),
+            (int) cercle.getCentre().getOrdonnee(),
+            (int) cercle.getRayon(),
+            (int) cercle.getRayon()
+        );
     }
 
     @Override

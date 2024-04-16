@@ -7,7 +7,7 @@ import geoanalytique.util.GeoObjectVisitor;
  */
 public class Cercle extends Ellipse {
     private Point centre; // Centre du cercle
-    private Float rayon; // Rayon du cercle
+    private float rayon; // Rayon du cercle
 
     /**
      * Constructeur pour initialiser un cercle avec son centre et son rayon spécifiés.
@@ -15,7 +15,7 @@ public class Cercle extends Ellipse {
      * @param centre Centre du cercle.
      * @param rayon  Rayon du cercle.
      */
-    public Cercle(Point centre, Float rayon) {
+    public Cercle(Point centre, float rayon) {
         super(centre, rayon, rayon); // Appel au constructeur de la classe parente avec le centre et le rayon pour le petit et le grand axe
         this.centre = centre;
         this.rayon = rayon;
@@ -44,7 +44,7 @@ public class Cercle extends Ellipse {
      *
      * @return Le rayon du cercle.
      */
-    public Float getRayon() {
+    public float getRayon() {
         return rayon;
     }
 
@@ -53,7 +53,7 @@ public class Cercle extends Ellipse {
      *
      * @param rayon Le nouveau rayon du cercle.
      */
-    public void setRayon(Float rayon) {
+    public void setRayon(float rayon) {
         this.rayon = rayon;
     }
 
