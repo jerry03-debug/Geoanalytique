@@ -280,8 +280,11 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
                         // Créer un nouveau point avec les coordonnées calculées par rapport au repère
                         Point pointCentre = new Point(repereCenterX, repereCenterY);
 
+                        // Recalculer le rayon pour respecter la graduation
+                        int repereRayon = rayon * tickSpacing;
+
                         // Créer un nouveau cercle avec les coordonnées calculées par rapport au repère
-                        Cercle cercle = new Cercle(pointCentre, rayon);
+                        Cercle cercle = new Cercle(pointCentre, repereRayon);
 
                         // Ajouter le cercle en tant qu'objet à la liste des graphiques via le contrôleur
                         controleur.addObject(cercle);
@@ -299,6 +302,7 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
             }
         }
     }
+
 
 
     private void btnCarreActionPerformed(java.awt.event.ActionEvent evt) {
