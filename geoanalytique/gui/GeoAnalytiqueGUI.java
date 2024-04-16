@@ -19,6 +19,8 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
         tableauDessin.add(repereOrthogonal, BorderLayout.CENTER);
     }
 
+    private static final int TICK_SPACING = 30; // Espacement entre les graduations
+
     private void initComponents() {
         tableauDessin = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -132,41 +134,45 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
     }
 
     private void btnPointActionPerformed(java.awt.event.ActionEvent evt) {
-        // Afficher une boîte de dialogue pour demander les coordonnées du point
-        String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
-        String yString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du point :", "Coordonnée Y", JOptionPane.QUESTION_MESSAGE);
+    // Afficher une boîte de dialogue pour demander les coordonnées du point
+    String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
+    String yString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du point :", "Coordonnée Y", JOptionPane.QUESTION_MESSAGE);
 
-        // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
-        if (xString != null && yString != null) {
-            try {
-                // Convertir les coordonnées en entiers
-                int x = Integer.parseInt(xString);
-                int y = Integer.parseInt(yString);
+    // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+    if (xString != null && yString != null) {
+        try {
+            // Convertir les coordonnées en entiers
+            int x = Integer.parseInt(xString);
+            int y = Integer.parseInt(yString);
 
-                // Récupérer les dimensions du repère
-                int width = repereOrthogonal.getWidth();
-                int height = repereOrthogonal.getHeight();
+            // Récupérer les dimensions du repère
+            int width = repereOrthogonal.getWidth();
+            int height = repereOrthogonal.getHeight();
 
-                // Calculer les coordonnées par rapport au centre du repère
-                int centerX = width / 2;
-                int centerY = height / 2;
-                int repereX = centerX + x;
-                int repereY = centerY - y; // Inversion de l'axe Y
+            // Calculer les graduations de l'axe des X et Y
+            int tickSpacing = TICK_SPACING;
 
-                // Créer un nouveau point avec les coordonnées calculées par rapport au repère
-                Point point = new Point(repereX, repereY);
+            // Calculer les coordonnées par rapport au centre du repère
+            int centerX = width / 2;
+            int centerY = height / 2;
+            int repereX = centerX + (x * tickSpacing); // Utiliser la graduation pour ajuster la position
+            int repereY = centerY - (y * tickSpacing); // Utiliser la graduation pour ajuster la position
 
-                // Ajouter le point en tant qu'objet à la liste des graphiques via le contrôleur
-                controleur.addObject(point);
+            // Créer un nouveau point avec les coordonnées calculées par rapport au repère
+            Point point = new Point(repereX, repereY);
 
-                // Rafraîchir l'affichage de GeoAnalytiqueView
-                repereOrthogonal.repaint();
-            } catch (NumberFormatException e) {
-                // Afficher un message d'erreur si les coordonnées ne sont pas valides
-                JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides.", "Erreur", JOptionPane.ERROR_MESSAGE);
-            }
+            // Ajouter le point en tant qu'objet à la liste des graphiques via le contrôleur
+            controleur.addObject(point);
+
+            // Rafraîchir l'affichage de GeoAnalytiqueView
+            repereOrthogonal.repaint();
+        } catch (NumberFormatException e) {
+            // Afficher un message d'erreur si les coordonnées ne sont pas valides
+            JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
+}
+
 
 
     private void btnCercleActionPerformed(java.awt.event.ActionEvent evt) {
