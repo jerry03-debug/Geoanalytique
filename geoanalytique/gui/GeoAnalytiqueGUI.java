@@ -1,6 +1,7 @@
 package geoanalytique.gui;
 
 import geoanalytique.model.Point;
+import geoanalytique.model.Segment;
 import geoanalytique.view.GeoAnalytiqueView;
 import geoanalytique.controleur.GeoAnalytiqueControleur;
 
@@ -93,6 +94,11 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
         jMenuItem3.add(btnDroite);
 
         btnSegment.setText("Segment");
+        btnSegment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSegmentActionPerformed(evt);
+            }
+        });
         jMenuItem3.add(btnSegment);
 
         btnEllipse.setText("Ellipse");
@@ -134,45 +140,108 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
     }
 
     private void btnPointActionPerformed(java.awt.event.ActionEvent evt) {
-    // Afficher une boîte de dialogue pour demander les coordonnées du point
-    String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
-    String yString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du point :", "Coordonnée Y", JOptionPane.QUESTION_MESSAGE);
+        // Afficher une boîte de dialogue pour demander les coordonnées du point
+        String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
+        String yString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du point :", "Coordonnée Y", JOptionPane.QUESTION_MESSAGE);
+
+        // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+        if (xString != null && yString != null) {
+            try {
+                // Convertir les coordonnées en entiers
+                int x = Integer.parseInt(xString);
+                int y = Integer.parseInt(yString);
+
+                // Récupérer les dimensions du repère
+                int width = repereOrthogonal.getWidth();
+                int height = repereOrthogonal.getHeight();
+
+                // Calculer les graduations de l'axe des X et Y
+                int tickSpacing = TICK_SPACING;
+
+                // Calculer les coordonnées par rapport au centre du repère
+                int centerX = width / 2;
+                int centerY = height / 2;
+                int repereX = centerX + (x * tickSpacing); // Utiliser la graduation pour ajuster la position
+                int repereY = centerY - (y * tickSpacing); // Utiliser la graduation pour ajuster la position
+
+                // Créer un nouveau point avec les coordonnées calculées par rapport au repère
+                Point point = new Point(repereX, repereY);
+
+                // Ajouter le point en tant qu'objet à la liste des graphiques via le contrôleur
+                controleur.addObject(point);
+
+                // Rafraîchir l'affichage de GeoAnalytiqueView
+                repereOrthogonal.repaint();
+            } catch (NumberFormatException e) {
+                // Afficher un message d'erreur si les coordonnées ne sont pas valides
+                JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void btnSegmentActionPerformed(java.awt.event.ActionEvent evt) {
+    // Afficher une boîte de dialogue pour demander les coordonnées du premier point
+    String x1String = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du premier point :", "Coordonnée X du premier point", JOptionPane.QUESTION_MESSAGE);
+    String y1String = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du premier point :", "Coordonnée Y du premier point", JOptionPane.QUESTION_MESSAGE);
 
     // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
-    if (xString != null && yString != null) {
+    if (x1String != null && y1String != null) {
         try {
-            // Convertir les coordonnées en entiers
-            int x = Integer.parseInt(xString);
-            int y = Integer.parseInt(yString);
+            // Convertir les coordonnées du premier point en entiers
+            int x1 = Integer.parseInt(x1String);
+            int y1 = Integer.parseInt(y1String);
 
-            // Récupérer les dimensions du repère
-            int width = repereOrthogonal.getWidth();
-            int height = repereOrthogonal.getHeight();
+            // Afficher une boîte de dialogue pour demander les coordonnées du deuxième point
+            String x2String = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du deuxième point :", "Coordonnée X du deuxième point", JOptionPane.QUESTION_MESSAGE);
+            String y2String = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du deuxième point :", "Coordonnée Y du deuxième point", JOptionPane.QUESTION_MESSAGE);
 
-            // Calculer les graduations de l'axe des X et Y
-            int tickSpacing = TICK_SPACING;
+            // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+            if (x2String != null && y2String != null) {
+                try {
+                    // Convertir les coordonnées du deuxième point en entiers
+                    int x2 = Integer.parseInt(x2String);
+                    int y2 = Integer.parseInt(y2String);
 
-            // Calculer les coordonnées par rapport au centre du repère
-            int centerX = width / 2;
-            int centerY = height / 2;
-            int repereX = centerX + (x * tickSpacing); // Utiliser la graduation pour ajuster la position
-            int repereY = centerY - (y * tickSpacing); // Utiliser la graduation pour ajuster la position
+                    // Récupérer les dimensions du repère
+                    int width = repereOrthogonal.getWidth();
+                    int height = repereOrthogonal.getHeight();
 
-            // Créer un nouveau point avec les coordonnées calculées par rapport au repère
-            Point point = new Point(repereX, repereY);
+                    // Calculer les graduations de l'axe des X et Y
+                    int tickSpacing = TICK_SPACING;
 
-            // Ajouter le point en tant qu'objet à la liste des graphiques via le contrôleur
-            controleur.addObject(point);
+                    // Calculer les coordonnées du premier point par rapport au centre du repère
+                    int centerX = width / 2;
+                    int centerY = height / 2;
+                    int repereX1 = centerX + (x1 * tickSpacing);
+                    int repereY1 = centerY - (y1 * tickSpacing);
 
-            // Rafraîchir l'affichage de GeoAnalytiqueView
-            repereOrthogonal.repaint();
+                    // Calculer les coordonnées du deuxième point par rapport au centre du repère
+                    int repereX2 = centerX + (x2 * tickSpacing);
+                    int repereY2 = centerY - (y2 * tickSpacing);
+
+                    // Créer deux nouveaux point avec les coordonnées calculées par rapport au repère
+                    Point point1 = new Point(repereX1, repereY1);
+                    Point point2 = new Point(repereX2, repereY2);
+
+                    // Créer un nouveau segment avec les coordonnées calculées par rapport au repère
+                    Segment segment = new Segment(point1, point2);
+
+                    // Ajouter le segment en tant qu'objet à la liste des graphiques via le contrôleur
+                    controleur.addObject(segment);
+
+                    // Rafraîchir l'affichage de GeoAnalytiqueView
+                    repereOrthogonal.repaint();
+                } catch (NumberFormatException e) {
+                    // Afficher un message d'erreur si les coordonnées du deuxième point ne sont pas valides
+                    JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le deuxième point.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         } catch (NumberFormatException e) {
-            // Afficher un message d'erreur si les coordonnées ne sont pas valides
-            JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            // Afficher un message d'erreur si les coordonnées du premier point ne sont pas valides
+            JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le premier point.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
-
 
 
     private void btnCercleActionPerformed(java.awt.event.ActionEvent evt) {
