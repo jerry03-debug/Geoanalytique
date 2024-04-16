@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Représente un point dans un système de coordonnées cartésiennes.
+ * Cette classe représente un Point dans un espace géométrique.
  */
 public class Point extends GeoObject {
     private float abscisse; // L'abscisse (ou la coordonnée x) du point

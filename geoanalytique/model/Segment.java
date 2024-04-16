@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Représente un segment dans un système de coordonnées cartésiennes.
+ * Cette classe représente un Segment dans un espace géométrique.
  */
 public class Segment extends Droite {
     private Point point1; // Premier point du segment

@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Cette classe représente un losange dans un espace géométrique.
+ * Cette classe représente un Losange dans un espace géométrique.
  */
 public class Losange extends Parallelogramme {
 

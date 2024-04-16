@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Représente une droite dans un système de coordonnées cartésiennes.
+ * Cette classe représente une Droite dans un espace géométrique.
  */
 public class Droite extends GeoObject {
     private float ordonneeOrigine; // L'ordonnée à l'origine de la droite

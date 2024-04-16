@@ -7,24 +7,38 @@ import geoanalytique.model.Point;
 import geoanalytique.model.Segment;
 import geoanalytique.view.GeoAnalytiqueView;
 import geoanalytique.controleur.GeoAnalytiqueControleur;
-
+import geoanalytique.controleur.OperationControleur;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GeoAnalytiqueGUI extends javax.swing.JFrame {
+/**
+ * Cette classe représente l'interface graphique de l'application GeoAnalytique.
+ * Elle permet à l'utilisateur d'interagir avec les différents éléments graphiques tels que les points, les cercles, les segments, etc.
+ */
 
+public class GeoAnalytiqueGUI extends javax.swing.JFrame {
+    // Vue du repère orthogonal
     private GeoAnalytiqueView repereOrthogonal = new GeoAnalytiqueView(new ArrayList<>());
+    // Contrôleur pour gérer les interactions avec les éléments graphiques
     private GeoAnalytiqueControleur controleur = new GeoAnalytiqueControleur(repereOrthogonal.getGraphiques());
 
+    /**
+     * Constructeur de la classe GeoAnalytiqueGUI.
+     * Initialise les composants de l'interface graphique et ajoute la vue du repère orthogonal au panneau principal.
+     */
     public GeoAnalytiqueGUI() {
         initComponents();
         tableauDessin.setLayout(new BorderLayout());
         tableauDessin.add(repereOrthogonal, BorderLayout.CENTER);
     }
 
-    private static final int TICK_SPACING = 30; // Espacement entre les graduations
+    // Espacement entre les graduations du repère orthogonal
+    private static final int TICK_SPACING = 30;
 
+     /**
+     * Méthode pour initialiser les composants de l'interface graphique.
+     */
     private void initComponents() {
         tableauDessin = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -139,88 +153,104 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
                                 .addComponent(tableauDessin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
-    }// </editor-fold>
+        // Configuration de l'interface utilisateur
 
+        // Ajout de gestionnaires d'événements et d'autres configurations
+        pack();
+    }
+
+    /**
+     * Méthode pour gérer l'événement de clic sur le bouton "Effacer".
+     * Efface tous les graphiques affichés dans GeoAnalytiqueView.
+     */
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {
-        // Efface tous les graphiques de GeoAnalytiqueView
         repereOrthogonal.clearGraphiques();
     }
 
+    /**
+     * Méthode pour gérer l'événement de clic sur le bouton "Ellipse".
+     * Affiche une boîte de dialogue pour demander les coordonnées et les dimensions de l'ellipse, puis ajoute l'ellipse à la vue du repère.
+     */
     private void btnEllipseActionPerformed(java.awt.event.ActionEvent evt) {
-    // Afficher une boîte de dialogue pour demander les coordonnées du centre de l'ellipse
-    String centerXString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du centre de l'ellipse :", "Coordonnée X du centre", JOptionPane.QUESTION_MESSAGE);
-    String centerYString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du centre de l'ellipse :", "Coordonnée Y du centre", JOptionPane.QUESTION_MESSAGE);
+        // Afficher une boîte de dialogue pour demander les coordonnées du centre de l'ellipse
+        String centerXString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du centre de l'ellipse :", "Coordonnée X du centre", JOptionPane.QUESTION_MESSAGE);
+        String centerYString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du centre de l'ellipse :", "Coordonnée Y du centre", JOptionPane.QUESTION_MESSAGE);
 
-    // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
-    if (centerXString != null && centerYString != null) {
-        try {
-            // Convertir les coordonnées du centre en entiers
-            int centerX = Integer.parseInt(centerXString);
-            int centerY = Integer.parseInt(centerYString);
+        // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+        if (centerXString != null && centerYString != null) {
+            try {
+                // Convertir les coordonnées du centre en entiers
+                int centerX = Integer.parseInt(centerXString);
+                int centerY = Integer.parseInt(centerYString);
 
-            // Afficher une boîte de dialogue pour demander le petit axe de l'ellipse
-            String petitAxeString = JOptionPane.showInputDialog(this, "Entrez la longueur du petit axe de l'ellipse :", "Longueur du petit axe", JOptionPane.QUESTION_MESSAGE);
+                // Afficher une boîte de dialogue pour demander le petit axe de l'ellipse
+                String petitAxeString = JOptionPane.showInputDialog(this, "Entrez la longueur du petit axe de l'ellipse :", "Longueur du petit axe", JOptionPane.QUESTION_MESSAGE);
 
-            // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
-            if (petitAxeString != null) {
-                try {
-                    // Convertir le petit axe en entier
-                    int petitAxe = Integer.parseInt(petitAxeString);
+                // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+                if (petitAxeString != null) {
+                    try {
+                        // Convertir le petit axe en entier
+                        int petitAxe = Integer.parseInt(petitAxeString);
 
-                    // Afficher une boîte de dialogue pour demander le grand axe de l'ellipse
-                    String grandAxeString = JOptionPane.showInputDialog(this, "Entrez la longueur du grand axe de l'ellipse :", "Longueur du grand axe", JOptionPane.QUESTION_MESSAGE);
+                        // Afficher une boîte de dialogue pour demander le grand axe de l'ellipse
+                        String grandAxeString = JOptionPane.showInputDialog(this, "Entrez la longueur du grand axe de l'ellipse :", "Longueur du grand axe", JOptionPane.QUESTION_MESSAGE);
 
-                    // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
-                    if (grandAxeString != null) {
-                        try {
-                            // Convertir le grand axe en entier
-                            int grandAxe = Integer.parseInt(grandAxeString);
+                        // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+                        if (grandAxeString != null) {
+                            try {
+                                // Convertir le grand axe en entier
+                                int grandAxe = Integer.parseInt(grandAxeString);
 
-                            // Récupérer les dimensions du repère
-                            int width = repereOrthogonal.getWidth();
-                            int height = repereOrthogonal.getHeight();
+                                // Récupérer les dimensions du repère
+                                int width = repereOrthogonal.getWidth();
+                                int height = repereOrthogonal.getHeight();
 
-                            // Calculer les graduations de l'axe des X et Y
-                            int tickSpacing = TICK_SPACING;
+                                System.out.println(repereOrthogonal.getWidth());
+                                System.out.println(repereOrthogonal.getHeight());
 
-                            // Calculer les coordonnées du centre par rapport au centre du repère
-                            int repereCenterX = (width / 2) + (centerX * tickSpacing);
-                            int repereCenterY = (height / 2) - (centerY * tickSpacing);
+                                // Calculer les graduations de l'axe des X et Y
+                                int tickSpacing = TICK_SPACING;
 
-                            // Créer un nouveau point avec les coordonnées calculées par rapport au repère
-                            Point pointCentre = new Point(repereCenterX, repereCenterY);
+                                // Calculer les coordonnées du centre par rapport au centre du repère
+                                int repereCenterX = (width / 2) + (centerX * tickSpacing);
+                                int repereCenterY = (height / 2) - (centerY * tickSpacing);
 
-                            // Recalculer le grandAxe et petitAxe pour respecter la graduation
-                            int repereGrandAxe = grandAxe * tickSpacing;
-                            int reperePetitAxe = petitAxe * tickSpacing;
+                                // Créer un nouveau point avec les coordonnées calculées par rapport au repère
+                                Point pointCentre = new Point(repereCenterX, repereCenterY);
 
-                            // Créer une nouvelle ellipse avec les coordonnées calculées par rapport au repère
-                            Ellipse ellipse = new Ellipse(pointCentre, reperePetitAxe, repereGrandAxe);
+                                // Recalculer le grandAxe et petitAxe pour respecter la graduation
+                                int repereGrandAxe = grandAxe * tickSpacing;
+                                int reperePetitAxe = petitAxe * tickSpacing;
 
-                            // Ajouter l'ellipse en tant qu'objet à la liste des graphiques via le contrôleur
-                            controleur.addObject(ellipse);
+                                // Créer une nouvelle ellipse avec les coordonnées calculées par rapport au repère
+                                Ellipse ellipse = new Ellipse(pointCentre, reperePetitAxe, repereGrandAxe);
 
-                            // Rafraîchir l'affichage de GeoAnalytiqueView
-                            repereOrthogonal.repaint();
-                        } catch (NumberFormatException e) {
-                            // Afficher un message d'erreur si le grand axe n'est pas valide
-                            JOptionPane.showMessageDialog(this, "Veuillez entrer un grand axe valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                                // Ajouter l'ellipse en tant qu'objet à la liste des graphiques via le contrôleur
+                                controleur.addObject(ellipse);
+
+                                // Rafraîchir l'affichage de GeoAnalytiqueView
+                                repereOrthogonal.repaint();
+                            } catch (NumberFormatException e) {
+                                // Afficher un message d'erreur si le grand axe n'est pas valide
+                                JOptionPane.showMessageDialog(this, "Veuillez entrer un grand axe valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
+                    } catch (NumberFormatException e) {
+                        // Afficher un message d'erreur si le petit axe n'est pas valide
+                        JOptionPane.showMessageDialog(this, "Veuillez entrer un petit axe valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (NumberFormatException e) {
-                    // Afficher un message d'erreur si le petit axe n'est pas valide
-                    JOptionPane.showMessageDialog(this, "Veuillez entrer un petit axe valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
+            } catch (NumberFormatException e) {
+                // Afficher un message d'erreur si les coordonnées du centre ne sont pas valides
+                JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le centre de l'ellipse.", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (NumberFormatException e) {
-            // Afficher un message d'erreur si les coordonnées du centre ne sont pas valides
-            JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le centre de l'ellipse.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
-}
 
-
+    /**
+     * Méthode pour gérer l'événement de clic sur le bouton "Point".
+     * Affiche une boîte de dialogue pour demander les coordonnées d'un Point', puis ajoute le point à la vue du repère.
+     */
     private void btnPointActionPerformed(java.awt.event.ActionEvent evt) {
         // Afficher une boîte de dialogue pour demander les coordonnées du point
         String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
@@ -261,6 +291,10 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Méthode pour gérer l'événement de clic sur le bouton "Segment".
+     * Affiche une boîte de dialogue pour demander les coordonnées d'un segment, puis ajoute le segment à la vue du repère.
+     */
     private void btnSegmentActionPerformed(java.awt.event.ActionEvent evt) {
         // Afficher une boîte de dialogue pour demander les coordonnées du premier point
         String x1String = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du premier point :", "Coordonnée X du premier point", JOptionPane.QUESTION_MESSAGE);
@@ -325,6 +359,10 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Méthode pour gérer l'événement de clic sur le bouton "Cercle".
+     * Affiche une boîte de dialogue pour demander les coordonnées et les dimensions du Cercle, puis ajoute le cercle à la vue du repère.
+     */
 
     private void btnCercleActionPerformed(java.awt.event.ActionEvent evt) {
         // Afficher une boîte de dialogue pour demander les coordonnées du centre
@@ -367,6 +405,9 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
                         // Créer un nouveau cercle avec les coordonnées calculées par rapport au repère
                         Cercle cercle = new Cercle(pointCentre, repereRayon);
 
+                        OperationControleur  operationControleur = new OperationControleur();
+                        operationControleur.operation(new Cercle(new Point(centerX, centerY), rayon));
+
                         // Ajouter le cercle en tant qu'objet à la liste des graphiques via le contrôleur
                         controleur.addObject(cercle);
 
@@ -385,75 +426,71 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
     }
 
 
-
+    /**
+     * Méthode pour gérer l'événement de clic sur le bouton "Carre".
+     * Affiche une boîte de dialogue pour demander les coordonnées et les dimensions d'un carre', puis ajoute le carre à la vue du repère.
+     */
     private void btnCarreActionPerformed(java.awt.event.ActionEvent evt) {
-    // Afficher une boîte de dialogue pour demander les coordonnées du point supérieur gauche du carré
-    String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point supérieur gauche du carré :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
-    String yString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du point supérieur gauche du carré :", "Coordonnée Y", JOptionPane.QUESTION_MESSAGE);
+        // Afficher une boîte de dialogue pour demander les coordonnées du point supérieur gauche du carré
+        String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point supérieur gauche du carré :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
+        String yString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du point supérieur gauche du carré :", "Coordonnée Y", JOptionPane.QUESTION_MESSAGE);
 
-    // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
-    if (xString != null && yString != null) {
-        try {
-            // Convertir les coordonnées en entiers
-            int x = Integer.parseInt(xString);
-            int y = Integer.parseInt(yString);
+        // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+        if (xString != null && yString != null) {
+            try {
+                // Convertir les coordonnées en entiers
+                int x = Integer.parseInt(xString);
+                int y = Integer.parseInt(yString);
 
-            // Afficher une boîte de dialogue pour demander la longueur du côté du carré
-            String longueurCoteString = JOptionPane.showInputDialog(this, "Entrez la longueur du côté du carré :", "Longueur du côté", JOptionPane.QUESTION_MESSAGE);
+                // Afficher une boîte de dialogue pour demander la longueur du côté du carré
+                String longueurCoteString = JOptionPane.showInputDialog(this, "Entrez la longueur du côté du carré :", "Longueur du côté", JOptionPane.QUESTION_MESSAGE);
 
-            // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
-            if (longueurCoteString != null) {
-                try {
-                    // Convertir la longueur du côté en entier
-                    int longueurCote = Integer.parseInt(longueurCoteString);
+                // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+                if (longueurCoteString != null) {
+                    try {
+                        // Convertir la longueur du côté en entier
+                        int longueurCote = Integer.parseInt(longueurCoteString);
 
-                    // Récupérer les dimensions du repère
-                    int width = repereOrthogonal.getWidth();
-                    int height = repereOrthogonal.getHeight();
+                        // Récupérer les dimensions du repère
+                        int width = repereOrthogonal.getWidth();
+                        int height = repereOrthogonal.getHeight();
 
-                    // Calculer les graduations de l'axe des X et Y
-                    int tickSpacing = TICK_SPACING;
+                        // Calculer les graduations de l'axe des X et Y
+                        int tickSpacing = TICK_SPACING;
 
-                    // Calculer les coordonnées du point supérieur gauche du carré par rapport au centre du repère
-                    int repereX = (width / 2) + (x * tickSpacing);
-                    int repereY = (height / 2) - (y * tickSpacing);
+                        // Calculer les coordonnées du point supérieur gauche du carré par rapport au centre du repère
+                        int repereX = (width / 2) + (x * tickSpacing);
+                        int repereY = (height / 2) - (y * tickSpacing);
 
-                    // Créer un nouveau point avec les coordonnées calculées par rapport au repère
-                    Point point1 = new Point(repereX, repereY);
-                    Point point2 = new Point(point1.getAbscisse() + (longueurCote * tickSpacing), point1.getOrdonnee());
-                    Point point3 = new Point(point1.getAbscisse() + (longueurCote * tickSpacing),point1.getOrdonnee() - (longueurCote * tickSpacing));
-                    Point point4 = new Point(point1.getAbscisse(),point1.getOrdonnee() - (longueurCote * tickSpacing));
+                        // Créer un nouveau point avec les coordonnées calculées par rapport au repère
+                        Point point1 = new Point(repereX, repereY);
+                        Point point2 = new Point(point1.getAbscisse() + (longueurCote * tickSpacing), point1.getOrdonnee());
+                        Point point3 = new Point(point1.getAbscisse() + (longueurCote * tickSpacing),point1.getOrdonnee() - (longueurCote * tickSpacing));
+                        Point point4 = new Point(point1.getAbscisse(),point1.getOrdonnee() - (longueurCote * tickSpacing));
 
-                    // Créer un nouveau carré avec les coordonnées calculées par rapport au repère et la longueur du côté
-                    Carre carre = new Carre(point1, point2, point3, point4);
+                        // Créer un nouveau carré avec les coordonnées calculées par rapport au repère et la longueur du côté
+                        Carre carre = new Carre(point1, point2, point3, point4);
 
-                    // Ajouter le carré en tant qu'objet à la liste des graphiques via le contrôleur
-                    controleur.addObject(carre);
+                        // Ajouter le carré en tant qu'objet à la liste des graphiques via le contrôleur
+                        controleur.addObject(carre);
 
-                    // Rafraîchir l'affichage de GeoAnalytiqueView
-                    repereOrthogonal.repaint();
-                } catch (NumberFormatException e) {
-                    // Afficher un message d'erreur si la longueur du côté n'est pas valide
-                    JOptionPane.showMessageDialog(this, "Veuillez entrer une longueur du côté valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                        // Operations sur un objet carrer
+
+                        // Rafraîchir l'affichage de GeoAnalytiqueView
+                        repereOrthogonal.repaint();
+                    } catch (NumberFormatException e) {
+                        // Afficher un message d'erreur si la longueur du côté n'est pas valide
+                        JOptionPane.showMessageDialog(this, "Veuillez entrer une longueur du côté valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
+            } catch (NumberFormatException e) {
+                // Afficher un message d'erreur si les coordonnées du point ne sont pas valides
+                JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le point supérieur gauche du carré.", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (NumberFormatException e) {
-            // Afficher un message d'erreur si les coordonnées du point ne sont pas valides
-            JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le point supérieur gauche du carré.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
-}
 
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GeoAnalytiqueGUI().setVisible(true);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify
+    // Variables declaration
     private javax.swing.JMenuItem btnCarre;
     private javax.swing.JMenuItem btnClear;
     private javax.swing.JMenu jMenuItem3;
@@ -467,5 +504,4 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem btnCercle;
     private javax.swing.JPanel tableauDessin;
-    // End of variables declaration
 }

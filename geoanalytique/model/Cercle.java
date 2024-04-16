@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Représente un cercle dans un système de coordonnées cartésiennes.
+ * Cette classe représente un Cercle dans un espace géométrique.
  */
 public class Cercle extends Ellipse {
     private Point centre; // Centre du cercle

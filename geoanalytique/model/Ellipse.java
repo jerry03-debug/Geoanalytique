@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Représente une ellipse dans un système de coordonnées cartésiennes.
+ * Cette classe représente une Ellipse dans un espace géométrique.
  */
 public class Ellipse extends Surface {
     private Point centre; // Centre de l'ellipse

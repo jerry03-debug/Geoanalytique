@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Représente un polygone dans un système de coordonnées cartésiennes.
+ * Cette classe représente un Polygone dans un espace géométrique.
  */
 public class Polygone extends Surface {
     private Point[] points; // Les sommets du polygone

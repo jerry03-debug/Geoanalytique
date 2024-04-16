@@ -16,6 +16,14 @@ import geoanalytique.model.Rectangle;
 import geoanalytique.model.Segment;
 import geoanalytique.model.Triangle;
 
+
+/**
+ * Cette interface définit les méthodes nécessaires pour visiter différents types d'objets géométriques
+ * et générer des graphiques correspondants.
+ *
+ * @param <Graphique> Le type de graphique généré lors de la visite.
+ */
+
 public interface GeoObjectVisitor<Graphique> {
 
     /**

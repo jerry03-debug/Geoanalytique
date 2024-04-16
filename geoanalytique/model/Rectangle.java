@@ -3,7 +3,7 @@ package geoanalytique.model;
 import geoanalytique.util.GeoObjectVisitor;
 
 /**
- * Cette classe représente un rectangle dans un espace géométrique.
+ * Cette classe représente un Rectangle dans un espace géométrique.
  */
 public class Rectangle extends Parallelogramme {
 
