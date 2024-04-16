@@ -11,6 +11,7 @@ import geoanalytique.model.Polygone;
 import geoanalytique.model.Rectangle;
 import geoanalytique.model.Segment;
 import geoanalytique.model.Triangle;
+import geoanalytique.model.geoobject.operation.DistanceAUnPointOperation;
 import geoanalytique.model.Losange;
 import geoanalytique.model.Parallelogramme;
 import geoanalytique.graphique.Graphique;
@@ -45,8 +46,15 @@ public class Dessinateur implements GeoObjectVisitor<Graphique> {
 
     @Override
     public Graphique visit(Carre carre) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+        DistanceAUnPointOperation  distance = new DistanceAUnPointOperation(carre.getSommet1() , carre.getSommet2());
+        Double cote = distance.calculer();
+        Integer longueur = cote.intValue();
+        return new GCoordonnee(
+            (int) carre.getSommet1().getAbscisse(),
+            (int) carre.getSommet1().getOrdonnee(),
+            longueur,
+            longueur
+        );
     }
 
     @Override

@@ -1,5 +1,6 @@
 package geoanalytique.gui;
 
+import geoanalytique.model.Carre;
 import geoanalytique.model.Cercle;
 import geoanalytique.model.Ellipse;
 import geoanalytique.model.Point;
@@ -386,8 +387,63 @@ public class GeoAnalytiqueGUI extends javax.swing.JFrame {
 
 
     private void btnCarreActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO: Implémentez l'ajout d'un carré
+    // Afficher une boîte de dialogue pour demander les coordonnées du point supérieur gauche du carré
+    String xString = JOptionPane.showInputDialog(this, "Entrez la coordonnée X du point supérieur gauche du carré :", "Coordonnée X", JOptionPane.QUESTION_MESSAGE);
+    String yString = JOptionPane.showInputDialog(this, "Entrez la coordonnée Y du point supérieur gauche du carré :", "Coordonnée Y", JOptionPane.QUESTION_MESSAGE);
+
+    // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+    if (xString != null && yString != null) {
+        try {
+            // Convertir les coordonnées en entiers
+            int x = Integer.parseInt(xString);
+            int y = Integer.parseInt(yString);
+
+            // Afficher une boîte de dialogue pour demander la longueur du côté du carré
+            String longueurCoteString = JOptionPane.showInputDialog(this, "Entrez la longueur du côté du carré :", "Longueur du côté", JOptionPane.QUESTION_MESSAGE);
+
+            // Vérifier si l'utilisateur a appuyé sur "Annuler" ou fermé la boîte de dialogue
+            if (longueurCoteString != null) {
+                try {
+                    // Convertir la longueur du côté en entier
+                    int longueurCote = Integer.parseInt(longueurCoteString);
+
+                    // Récupérer les dimensions du repère
+                    int width = repereOrthogonal.getWidth();
+                    int height = repereOrthogonal.getHeight();
+
+                    // Calculer les graduations de l'axe des X et Y
+                    int tickSpacing = TICK_SPACING;
+
+                    // Calculer les coordonnées du point supérieur gauche du carré par rapport au centre du repère
+                    int repereX = (width / 2) + (x * tickSpacing);
+                    int repereY = (height / 2) - (y * tickSpacing);
+
+                    // Créer un nouveau point avec les coordonnées calculées par rapport au repère
+                    Point point1 = new Point(repereX, repereY);
+                    Point point2 = new Point(point1.getAbscisse() + (longueurCote * tickSpacing), point1.getOrdonnee());
+                    Point point3 = new Point(point1.getAbscisse() + (longueurCote * tickSpacing),point1.getOrdonnee() - (longueurCote * tickSpacing));
+                    Point point4 = new Point(point1.getAbscisse(),point1.getOrdonnee() - (longueurCote * tickSpacing));
+
+                    // Créer un nouveau carré avec les coordonnées calculées par rapport au repère et la longueur du côté
+                    Carre carre = new Carre(point1, point2, point3, point4);
+
+                    // Ajouter le carré en tant qu'objet à la liste des graphiques via le contrôleur
+                    controleur.addObject(carre);
+
+                    // Rafraîchir l'affichage de GeoAnalytiqueView
+                    repereOrthogonal.repaint();
+                } catch (NumberFormatException e) {
+                    // Afficher un message d'erreur si la longueur du côté n'est pas valide
+                    JOptionPane.showMessageDialog(this, "Veuillez entrer une longueur du côté valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (NumberFormatException e) {
+            // Afficher un message d'erreur si les coordonnées du point ne sont pas valides
+            JOptionPane.showMessageDialog(this, "Veuillez entrer des coordonnées valides pour le point supérieur gauche du carré.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
     }
+}
+
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
