@@ -7,8 +7,8 @@ import geoanalytique.util.GeoObjectVisitor;
  */
 public class Ellipse extends Surface {
     private Point centre; // Centre de l'ellipse
-    private Float petitAxe; // Longueur du petit axe de l'ellipse
-    private Float grandAxe; // Longueur du grand axe de l'ellipse
+    private float petitAxe; // Longueur du petit axe de l'ellipse
+    private float grandAxe; // Longueur du grand axe de l'ellipse
 
     /**
      * Constructeur pour initialiser une ellipse avec son centre, le petit axe et le grand axe spécifiés.
@@ -17,7 +17,7 @@ public class Ellipse extends Surface {
      * @param petitAxe Longueur du petit axe de l'ellipse.
      * @param grandAxe Longueur du grand axe de l'ellipse.
      */
-    public Ellipse(Point centre, Float petitAxe, Float grandAxe) {
+    public Ellipse(Point centre, float petitAxe, float grandAxe) {
         this.centre = centre;
         this.petitAxe = petitAxe;
         this.grandAxe = grandAxe;
@@ -46,7 +46,7 @@ public class Ellipse extends Surface {
      *
      * @return La longueur du petit axe de l'ellipse.
      */
-    public Float getPetitAxe() {
+    public float getPetitAxe() {
         return petitAxe;
     }
 
@@ -55,7 +55,7 @@ public class Ellipse extends Surface {
      *
      * @param petitAxe La nouvelle longueur du petit axe de l'ellipse.
      */
-    public void setPetitAxe(Float petitAxe) {
+    public void setPetitAxe(float petitAxe) {
         this.petitAxe = petitAxe;
     }
 
@@ -64,7 +64,7 @@ public class Ellipse extends Surface {
      *
      * @return La longueur du grand axe de l'ellipse.
      */
-    public Float getGrandAxe() {
+    public float getGrandAxe() {
         return grandAxe;
     }
 
@@ -73,7 +73,7 @@ public class Ellipse extends Surface {
      *
      * @param grandAxe La nouvelle longueur du grand axe de l'ellipse.
      */
-    public void setGrandAxe(Float grandAxe) {
+    public void setGrandAxe(float grandAxe) {
         this.grandAxe = grandAxe;
     }
 

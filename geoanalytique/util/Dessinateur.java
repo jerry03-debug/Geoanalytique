@@ -67,8 +67,12 @@ public class Dessinateur implements GeoObjectVisitor<Graphique> {
 
     @Override
     public Graphique visit(Ellipse ellipse) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+        return new GOvale(
+            (int) ellipse.getCentre().getAbscisse(),
+            (int) ellipse.getCentre().getOrdonnee(),
+            (int) ellipse.getPetitAxe(),
+            (int) ellipse.getGrandAxe()
+        );
     }
 
     @Override
